@@ -122,7 +122,7 @@ def run(args=None):
         roots.append(m)
 
     if args.template_dir is not None:
-        pdocs.doc.tpl_lookup.directories.insert(0, args.template_dir)
+        pdocs.render.tpl_lookup.directories.insert(0, args.template_dir)
     if args.http:
         args.html = True
         args.external_links = True
