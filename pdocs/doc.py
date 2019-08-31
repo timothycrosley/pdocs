@@ -269,6 +269,13 @@ class Module(Doc):
     def refname(self):
         return self.name
 
+    @property
+    def is_namespace(self):
+        """Returns `True` if this module represents a
+           [namespace package](https://packaging.python.org/guides/packaging-namespace-packages/).
+        """
+        return self.module.__spec__.origin in (None, 'namespace')
+
     def mro(self, cls):
         """
         Returns a method resolution list of ancestor documentation objects
