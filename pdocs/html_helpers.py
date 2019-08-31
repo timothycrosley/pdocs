@@ -9,6 +9,7 @@ import pygments.lexers
 
 import pdocs.doc
 import pdocs.render
+from pdocs import defaults
 
 # From language reference, but adds '.' to allow fully qualified names.
 pyident = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_.]+$")
@@ -61,15 +62,20 @@ def linkify(parent, match, link_prefix):
     return "[`%s`](%s)" % (name, url)
 
 
-def mark(s, module_list=None, linky=True):
+def mark(
+    text,
+    module_list=None,
+    linky=True,
+    extensions=defaults.MARKDOWN_EXTENSIONS,
+    extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS,
+):
     if linky:
-        s, _ = re.subn("\b\n\b", " ", s)
-    # if not module_list:
-    #     s, _ = re.subn("`[^`]+`", linkify, s)
+        text, _ = re.subn("\b\n\b", " ", text)
 
-    extensions = ["fenced-code-blocks"]
-    s = markdown2.markdown(s.strip(), extras=extensions)
-    return s
+    text = markdown.Markdown(
+        text.strip(), extensions=extensions, extension_configs=extension_configs
+    )
+    return text
 
 
 def glimpse(s, length=100):

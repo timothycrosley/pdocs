@@ -16,7 +16,7 @@ def _source(obj):
     """
     try:
         return inspect.getsourcelines(obj.__wrapped__)[0]
-    except Exception:
+    except BaseException:
         pass
     try:
         return inspect.getsourcelines(obj)[0]
@@ -206,7 +206,7 @@ class Module(Doc):
         try:
             tree = ast.parse(inspect.getsource(self.module))
             vardocs = _var_docstrings(tree, self, cls=None)
-        except Exception:
+        except BaseException:
             pass
         self._declared_variables = vardocs.keys()
 
@@ -468,7 +468,7 @@ class Class(Doc):
                 if isinstance(n, ast.FunctionDef) and n.name == "__init__":
                     self.doc_init = _var_docstrings(n, self.module, cls=self, init=True)
                     break
-        except Exception:
+        except BaseException:
             pass
 
         # Convert the public Python objects to documentation objects.
