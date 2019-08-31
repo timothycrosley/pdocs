@@ -1,4 +1,4 @@
-<%def name="pdoc()">
+<%def name="pdocs()">
   html, body {
     margin: 0;
     padding: 0;

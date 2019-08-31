@@ -15,6 +15,14 @@ from pdocs import defaults
 pyident = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_.]+$")
 indent = re.compile(r"^\s*")
 
+_markdown = markdown.Markdown(
+    output_format="html5", extensions=defaults.MARKDOWN_EXTENSIONS, extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS
+)
+
+
+def _markdown_render(text):
+    return _markdown.reset().convert(text)
+
 
 def decode(s):
     if sys.version_info[0] < 3 and isinstance(s, str):
@@ -66,16 +74,10 @@ def mark(
     text,
     module_list=None,
     linky=True,
-    extensions=defaults.MARKDOWN_EXTENSIONS,
-    extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS,
 ):
     if linky:
         text, _ = re.subn("\b\n\b", " ", text)
-
-    text = markdown.Markdown(
-        text.strip(), extensions=extensions, extension_configs=extension_configs
-    )
-    return text
+    return _markdown_render(text.strip())
 
 
 def glimpse(s, length=100):

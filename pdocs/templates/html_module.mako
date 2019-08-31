@@ -1,8 +1,8 @@
 ## -*- coding: utf-8 -*-
 <%!
 import pygments
-import pdoc.doc
-import pdoc.html_helpers as hh
+import pdocs.doc
+import pdocs.html_helpers as hh
 %>
 
 <%inherit file="html_frame.mako"/>
@@ -32,7 +32,7 @@ import pdoc.html_helpers as hh
     <div class="desc">${docstring | hh.mark}</div>
   % endif
   % endif
-  % if not isinstance(d, pdoc.doc.Module):
+  % if not isinstance(d, pdocs.doc.Module):
   <div class="source_cont">${show_source(d)}</div>
   % endif
 </%def>
