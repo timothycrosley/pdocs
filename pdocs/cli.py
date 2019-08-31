@@ -95,9 +95,10 @@ def _eprint(*args, **kwargs):
     print(*args, **kwargs)
 
 
-def run():
+def run(args=None):
     """ Command-line entry point """
-    args = parser.parse_args()
+    if not args:
+        args = parser.parse_args()
 
     docfilter = None
     if args.filter and len(args.filter.strip()) > 0:
