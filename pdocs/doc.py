@@ -16,11 +16,11 @@ def _source(obj):
     """
     try:
         return inspect.getsourcelines(obj.__wrapped__)[0]
-    except:
+    except Exception:
         pass
     try:
         return inspect.getsourcelines(obj)[0]
-    except:
+    except Exception:
         return []
 
 
@@ -146,7 +146,7 @@ class Doc(object):
 
         If neither works, then the empty list is returned.
         """
-        assert False, "subclass responsibility"
+        raise NotImplementedError("source() method should be implemented by sub casses")
 
     @property
     def refname(self):
@@ -158,7 +158,7 @@ class Doc(object):
         e.g., The refname for this property is
         <code>pdoc.Doc.refname</code>.
         """
-        assert False, "subclass responsibility"
+        raise NotImplementedError("refname() method should be implemented by sub casses")
 
     def __lt__(self, other):
         return self.name < other.name
@@ -206,7 +206,7 @@ class Module(Doc):
         try:
             tree = ast.parse(inspect.getsource(self.module))
             vardocs = _var_docstrings(tree, self, cls=None)
-        except:
+        except Exception:
             pass
         self._declared_variables = vardocs.keys()
 
@@ -236,7 +236,7 @@ class Module(Doc):
                 docobj._fill_inheritance()
 
         # Build the reference name dictionary.
-        for basename, docobj in self.doc.items():
+        for _basename, docobj in self.doc.items():
             self.refdoc[docobj.refname] = docobj
             if isinstance(docobj, Class):
                 for v in docobj.class_variables():
@@ -363,24 +363,21 @@ class Module(Doc):
         Returns all documented module level variables in the module
         sorted alphabetically as a list of `pdoc.Variable`.
         """
-        p = lambda o: isinstance(o, Variable)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(filter(lambda o: isinstance(o, Variable), self.doc.values()))
 
     def classes(self):
         """
         Returns all documented module level classes in the module
         sorted alphabetically as a list of `pdoc.Class`.
         """
-        p = lambda o: isinstance(o, Class)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(filter(lambda o: isinstance(o, Class), self.doc.values()))
 
     def functions(self):
         """
         Returns all documented module level functions in the module
         sorted alphabetically as a list of `pdoc.Function`.
         """
-        p = lambda o: isinstance(o, Function)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(filter(lambda o: isinstance(o, Function), self.doc.values()))
 
     def __is_exported(self, name, module):
         """
@@ -471,7 +468,7 @@ class Class(Doc):
                 if isinstance(n, ast.FunctionDef) and n.name == "__init__":
                     self.doc_init = _var_docstrings(n, self.module, cls=self, init=True)
                     break
-        except:
+        except Exception:
             pass
 
         # Convert the public Python objects to documentation objects.
@@ -509,8 +506,7 @@ class Class(Doc):
         Returns all documented class variables in the class, sorted
         alphabetically as a list of `pdoc.Variable`.
         """
-        p = lambda o: isinstance(o, Variable)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(filter(lambda o: isinstance(o, Variable), self.doc.values()))
 
     def instance_variables(self):
         """
@@ -519,8 +515,7 @@ class Class(Doc):
         are attributes of `self` defined in a class's `__init__`
         method.
         """
-        p = lambda o: isinstance(o, Variable)
-        return sorted(filter(p, self.doc_init.values()))
+        return sorted(filter(lambda o: isinstance(o, Variable), self.doc_init.values()))
 
     def methods(self):
         """
@@ -530,16 +525,16 @@ class Class(Doc):
 
         Unfortunately, this also includes class methods.
         """
-        p = lambda o: (isinstance(o, Function) and o.method)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(filter(lambda o: (isinstance(o, Function) and o.method), self.doc.values()))
 
     def functions(self):
         """
         Returns all documented static functions as `pdoc.Function`
         objects in the class, sorted alphabetically.
         """
-        p = lambda o: (isinstance(o, Function) and not o.method)
-        return sorted(filter(p, self.doc.values()))
+        return sorted(
+            filter(lambda o: (isinstance(o, Function) and not o.method), self.doc.values())
+        )
 
     def _fill_inheritance(self):
         """

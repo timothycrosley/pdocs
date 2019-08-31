@@ -11,8 +11,8 @@ import pdocs.doc
 import pdocs.render
 
 # From language reference, but adds '.' to allow fully qualified names.
-pyident = re.compile("^[a-zA-Z_][a-zA-Z0-9_.]+$")
-indent = re.compile("^\s*")
+pyident = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_.]+$")
+indent = re.compile(r"^\s*")
 
 
 def decode(s):

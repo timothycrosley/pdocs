@@ -24,6 +24,10 @@ safety = "^1.8"
 black = {version = "^18.3-alpha.0", allows-prereleases = true}
 pytest-mock = "^1.10"
 ipython = "^7.7"
+flake8 = "^3.7"
+
+[tool.poetry.settings.virtualenvs]
+in-project = "true"
 
 [build-system]
 requires = ["poetry>=0.12"]
