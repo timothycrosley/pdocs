@@ -96,6 +96,18 @@ def _is_method(cls: typing.Type, method_name: str) -> bool:
         )
 
 
+def _filter(items, kind, attributes_set=(), attributes_not_set=(), sort=True):
+    items = (item for item in items if isinstance(item, kind))
+    for attribute_set in attributes_set:
+        items = (item for item in items if getattr(item, attribute_set, False))
+    for attribute_not_set in attributes_not_set:
+        items = (item for item in items if not getattr(item, attribute_not_set, False))
+    if sort:
+        return sorted(items)
+    else:
+        return tuple(items)
+
+
 class Doc(object):
     """
     A base class for all documentation objects.
@@ -370,21 +382,21 @@ class Module(Doc):
         Returns all documented module level variables in the module
         sorted alphabetically as a list of `pdoc.Variable`.
         """
-        return sorted(filter(lambda o: isinstance(o, Variable), self.doc.values()))
+        return _filter(self.doc.values(), Variable)
 
     def classes(self):
         """
         Returns all documented module level classes in the module
         sorted alphabetically as a list of `pdoc.Class`.
         """
-        return sorted(filter(lambda o: isinstance(o, Class), self.doc.values()))
+        return _filter(self.doc.values(), Class)
 
     def functions(self):
         """
         Returns all documented module level functions in the module
         sorted alphabetically as a list of `pdoc.Function`.
         """
-        return sorted(filter(lambda o: isinstance(o, Function), self.doc.values()))
+        return _filter(self.doc.values(), Function)
 
     def __is_exported(self, name, module):
         """
@@ -513,7 +525,7 @@ class Class(Doc):
         Returns all documented class variables in the class, sorted
         alphabetically as a list of `pdoc.Variable`.
         """
-        return sorted(filter(lambda o: isinstance(o, Variable), self.doc.values()))
+        return _filter(self.doc.values(), Variable)
 
     def instance_variables(self):
         """
@@ -522,26 +534,23 @@ class Class(Doc):
         are attributes of `self` defined in a class's `__init__`
         method.
         """
-        return sorted(filter(lambda o: isinstance(o, Variable), self.doc_init.values()))
+        return _filter(self.doc_init.values(), Variable)
 
     def methods(self):
         """
         Returns all documented methods as `pdoc.Function` objects in
-        the class, sorted alphabetically with `__init__` always coming
-        first.
+        the class, sorted alphabetically.
 
         Unfortunately, this also includes class methods.
         """
-        return sorted(filter(lambda o: (isinstance(o, Function) and o.method), self.doc.values()))
+        return _filter(self.doc.values(), Function, attributes_set=("method", ))
 
     def functions(self):
         """
         Returns all documented static functions as `pdoc.Function`
         objects in the class, sorted alphabetically.
         """
-        return sorted(
-            filter(lambda o: (isinstance(o, Function) and not o.method), self.doc.values())
-        )
+        return _filter(self.doc.values(), Function, attributes_not_set=("method", ))
 
     def params(self, annotate=False):
         """Returns back the parameters for the classes __init__ method"""
@@ -606,7 +615,7 @@ class Class(Doc):
             return _pdoc.get("%s.%s" % (self.name, name), False) is None
 
         def exported(name):
-            exported = name == "__init__" or _is_exported(name)
+            exported = name == _is_exported(name)
             return not forced_out(name) and exported
 
         idents = dict(inspect.getmembers(self.cls))

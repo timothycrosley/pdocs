@@ -99,8 +99,11 @@ def _extract_module(dname: str, mname: str, parent=None) -> typing.Any:
     m, pkg = load_module(dname, mname)
     mod = pdocs.doc.Module(mname, m, parent)
     if pkg:
-        for i in submodules(dname, mname):
-            mod.submodules.append(_extract_module(dname, i, parent=mod))
+        for submodule_full_name in submodules(dname, mname):
+            if submodule_full_name.split(".")[-1].startswith("_"):
+                continue
+
+            mod.submodules.append(_extract_module(dname, submodule_full_name, parent=mod))
     return mod
 
 
