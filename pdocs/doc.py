@@ -543,6 +543,11 @@ class Class(Doc):
             filter(lambda o: (isinstance(o, Function) and not o.method), self.doc.values())
         )
 
+    def params(self, annotate=False):
+        """Returns back the parameters for the classes __init__ method"""
+        params = Function._params(self.cls.__init__, annotate=annotate)
+        return params[1:] if params[0] == 'self' else params
+
     def _fill_inheritance(self):
         """
         Traverses this class's ancestor list and attempts to fill in
@@ -578,6 +583,16 @@ class Class(Doc):
                 d = c.doc_init[name]
                 self.doc_init[name] = Variable(d.name, d.module, "", cls=self)
                 self.doc_init[name].inherits = d
+
+    def mro(self):
+        """Returns back the Method Resolution Order (MRO) for this class"""
+        return [self.module.find_class(cls)
+                for cls in inspect.getmro(self.cls)
+                if cls not in (self.cls, object, self)]
+
+    def subclasses(self):
+        """Returns back all subclasses of this class"""
+        return [self.module.find_class(cls) for cls in type.__subclasses__(self.cls)]
 
     def __public_objs(self):
         """
@@ -677,7 +692,16 @@ class Function(Doc):
         """
         return ", ".join(self.params())
 
-    def params(self):
+    def params(self, annotate=False):
+        """
+        Returns a list where each element is a nicely formatted
+        parameter of this function. This includes argument lists,
+        keyword arguments and default values.
+        """
+        return self._params(self.func, annotate=annotate)
+
+    @staticmethod
+    def _params(function, annotate=False):
         """
         Returns a list where each element is a nicely formatted
         parameter of this function. This includes argument lists,
@@ -692,7 +716,7 @@ class Function(Doc):
 
         try:
             getspec = getattr(inspect, "getfullargspec", inspect.getargspec)
-            s = getspec(self.func)
+            s = getspec(function)
         except TypeError:
             # I guess this is for C builtin functions?
             return ["..."]

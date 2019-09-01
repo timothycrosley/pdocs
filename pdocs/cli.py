@@ -49,7 +49,7 @@ aa(
 aa(
     "--overwrite",
     action="store_true",
-    help="Overwrites any existing HTML files instead of producing an error.",
+    help="Overwrites any existing files in the output location instead of producing an error.",
 )
 aa(
     "--all-submodules",
@@ -88,6 +88,7 @@ aa(
 )
 aa("--http-host", type=str, default="localhost", help="The host on which to run the HTTP server.")
 aa("--http-port", type=int, default=8080, help="The port on which to run the HTTP server.")
+aa("--output-dir", type=str, default="", help="Disk path to output rendered documentation files.")
 
 
 def _eprint(*args, **kwargs):
@@ -143,6 +144,12 @@ def run(args=None):
             _eprint("Rendering would overwrite files, but --overwite is not set")
             sys.exit(1)
         pdocs.static.html_out(dst, roots)
+    elif args.output_dir:
+        dst = pathlib.Path(args.output_dir)
+        if not args.overwrite and pdocs.static.would_overwrite(dst, roots):
+            _eprint("Rendering would overwrite files, but --overwite is not set")
+            sys.exit(1)
+        pdocs.static.md_out(dst, roots)
     else:
         # Plain text
         for m in roots:

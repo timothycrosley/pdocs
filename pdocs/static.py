@@ -9,18 +9,18 @@ class StaticError(Exception):
     pass
 
 
-def module_to_path(m: pdocs.doc.Module) -> pathlib.Path:
+def module_to_path(m: pdocs.doc.Module, extension="html") -> pathlib.Path:
     """
         Calculates the filesystem path for the static output of a given module.
     """
     p = pathlib.Path(*m.name.split("."))
     if m.submodules:
-        p /= "index.html"
+        p /= f"index.{extension}"
     else:
         if p.stem == "index":
-            p = p.with_suffix(".m.html")
+            p = p.with_suffix(f".m.{extension}")
         else:
-            p = p.with_suffix(".html")
+            p = p.with_suffix(f".{extension}")
     return p
 
 
@@ -78,4 +78,22 @@ def html_out(
             out = pdocs.render.html_module(
                 m, external_links=external_links, link_prefix=link_prefix, source=source
             )
+            p.write_text(out, encoding="utf-8")
+
+def md_out(
+    dst: pathlib.Path,
+    roots: typing.Sequence[pdocs.doc.Module],
+    externel_links: bool = True,
+    link_prefix: str = "",
+    source: bool = False,
+):
+    # if len(roots) > 1:
+    #     p = dst / "index.md"
+    #     idx = pdocs.render.text(roots)
+    #     p.write_text(idx, encoding="utf-8")
+    for root in roots:
+        for m in root.allmodules():
+            p = dst.joinpath(module_to_path(m, extension="md"))
+            p.parent.mkdir(parents=True, exist_ok=True)
+            out = pdocs.render.text(m)
             p.write_text(out, encoding="utf-8")
