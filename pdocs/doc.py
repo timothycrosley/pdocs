@@ -552,9 +552,9 @@ class Class(Doc):
         """
         return _filter(self.doc.values(), Function, attributes_not_set=("method",))
 
-    def params(self, annotate=False):
+    def params(self):
         """Returns back the parameters for the classes __init__ method"""
-        params = Function._params(self.cls.__init__, annotate=annotate)
+        params = Function._params(self.cls.__init__)
         return params[1:] if params[0] == "self" else params
 
     def _fill_inheritance(self):
@@ -703,16 +703,16 @@ class Function(Doc):
         """
         return ", ".join(self.params())
 
-    def params(self, annotate=False):
+    def params(self):
         """
         Returns a list where each element is a nicely formatted
         parameter of this function. This includes argument lists,
         keyword arguments and default values.
         """
-        return self._params(self.func, annotate=annotate)
+        return self._params(self.func)
 
     @staticmethod
-    def _params(function, annotate=False):
+    def _params(function):
         """
         Returns a list where each element is a nicely formatted
         parameter of this function. This includes argument lists,
@@ -726,37 +726,10 @@ class Function(Doc):
                 return "(%s)" % (", ".join(map(fmt_param, el)))
 
         try:
-            getspec = getattr(inspect, "getfullargspec", inspect.getargspec)
-            s = getspec(function)
+            return [str(param) for param in inspect.signature(function).parameters.values()]
         except TypeError:
             # I guess this is for C builtin functions?
             return ["..."]
-
-        params = []
-        for i, param in enumerate(s.args):
-            if s.defaults is not None and len(s.args) - i <= len(s.defaults):
-                defind = len(s.defaults) - (len(s.args) - i)
-                params.append("%s=%s" % (param, repr(s.defaults[defind])))
-            else:
-                params.append(fmt_param(param))
-        if s.varargs is not None:
-            params.append("*%s" % s.varargs)
-
-        kwonlyargs = getattr(s, "kwonlyargs", None)
-        if kwonlyargs:
-            if s.varargs is None:
-                params.append("*")
-            for param in kwonlyargs:
-                try:
-                    params.append("%s=%s" % (param, repr(s.kwonlydefaults[param])))
-                except KeyError:
-                    params.append(param)
-
-        keywords = getattr(s, "varkw", getattr(s, "keywords", None))
-        if keywords is not None:
-            params.append("**%s" % keywords)
-        # TODO: The only thing now missing for Python 3 are type annotations
-        return params
 
     def __lt__(self, other):
         # Push __init__ to the top.
