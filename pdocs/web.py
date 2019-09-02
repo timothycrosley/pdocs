@@ -3,6 +3,8 @@ import logging
 import os.path
 import re
 
+import mako
+
 import pdocs.doc
 import pdocs.extract
 import pdocs.render
@@ -23,11 +25,7 @@ class DocHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):  # noqa: N802
         if self.path == "/":
-            midx = []
-            for m in self.server.modules:
-                midx.append((m.name, m.docstring))
-            midx = sorted(midx, key=lambda x: x[0].lower())
-            out = pdocs.render.html_index(midx, self.server.args.link_prefix)
+            out = pdocs.render.html_index(self.server.modules, self.server.args.link_prefix)
         elif self.path.endswith(".ext"):
             # External links are a bit weird. You should view them as a giant
             # hack. Basically, the idea is to "guess" where something lives
