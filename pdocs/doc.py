@@ -703,6 +703,21 @@ class Function(Doc):
         """
         return ", ".join(self.params())
 
+    @staticmethod
+    def _signature(function):
+        try:
+            return inspect.signature(function)
+        except TypeError:  # We can't get a Python signature (likely C function)
+            return False
+
+    def return_annotation(self):
+        """Returns back return type annotation if a valid one is found"""
+        signature = self._signature(self.func)
+        if not signature or signature.return_annotation == inspect._empty:
+            return ""
+
+        return inspect.formatannotation(signature.return_annotation)
+
     def params(self):
         """
         Returns a list where each element is a nicely formatted
@@ -711,16 +726,15 @@ class Function(Doc):
         """
         return self._params(self.func)
 
-    @staticmethod
-    def _params(function):
+    @classmethod
+    def _params(cls, function):
         """
         Returns a list where each element is a nicely formatted
         parameter of this function. This includes argument lists,
         keyword arguments and default values.
         """
-        try:
-            signature = inspect.signature(function)
-        except TypeError:  # We can't get a Python signature for the function (likely C function)
+        signature = cls._signature(function)
+        if not signature:
             return ["..."]
 
         # The following is taken almost verbatim from the Python stdlib
