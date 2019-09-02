@@ -88,10 +88,6 @@ def md_out(
     link_prefix: str = "",
     source: bool = False,
 ):
-    # if len(roots) > 1:
-    #     p = dst / "index.md"
-    #     idx = pdocs.render.text(roots)
-    #     p.write_text(idx, encoding="utf-8")
     for root in roots:
         for m in root.allmodules():
             p = dst.joinpath(module_to_path(m, extension="md"))
