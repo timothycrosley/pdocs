@@ -9,7 +9,7 @@ import pdocs.render
 
 
 class DocHandler(http.server.BaseHTTPRequestHandler):
-    def do_HEAD(self):
+    def do_HEAD(self):  # noqa: N802
         if self.path != "/":
             out = self.html()
             if out is None:
@@ -21,7 +21,7 @@ class DocHandler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-type", "text/html")
         self.end_headers()
 
-    def do_GET(self):
+    def do_GET(self):  # noqa: N802
         if self.path == "/":
             midx = []
             for m in self.server.modules:
