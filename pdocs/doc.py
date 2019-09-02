@@ -732,10 +732,8 @@ class Function(Doc):
         render_pos_only_separator = False
         render_kw_only_separator = True
         for param in signature.parameters.values():
-            formatted = str(param)
 
             kind = param.kind
-
             if kind == inspect._POSITIONAL_ONLY:
                 render_pos_only_separator = True
             elif render_pos_only_separator:
@@ -748,7 +746,7 @@ class Function(Doc):
                 params.append('*')
                 render_kw_only_separator = False
 
-            params.append(formatted)
+            params.append(str(param))
 
         if render_pos_only_separator:
             params.append('/')
