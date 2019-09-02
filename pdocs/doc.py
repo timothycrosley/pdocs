@@ -718,18 +718,43 @@ class Function(Doc):
         parameter of this function. This includes argument lists,
         keyword arguments and default values.
         """
-
-        def fmt_param(el):
-            if isinstance(el, str):
-                return el
-            else:
-                return "(%s)" % (", ".join(map(fmt_param, el)))
-
         try:
-            return [str(param) for param in inspect.signature(function).parameters.values()]
-        except TypeError:
-            # I guess this is for C builtin functions?
+            signature = inspect.signature(function)
+        except TypeError:  # We can't get a Python signature for the function (likely C function)
             return ["..."]
+
+        # The following is taken almost verbatim from the Python stdlib
+        # https://github.com/python/cpython/blob/3.6/Lib/inspect.py#L3017
+        #
+        # This is done simply because it is hard to unstringify the result since commas could
+        # be present beyond just between parameters.
+        params = []
+        render_pos_only_separator = False
+        render_kw_only_separator = True
+        for param in signature.parameters.values():
+            formatted = str(param)
+
+            kind = param.kind
+
+            if kind == inspect._POSITIONAL_ONLY:
+                render_pos_only_separator = True
+            elif render_pos_only_separator:
+                params.append('/')
+                render_pos_only_separator = False
+
+            if kind == inspect._VAR_POSITIONAL:
+                render_kw_only_separator = False
+            elif kind == inspect._KEYWORD_ONLY and render_kw_only_separator:
+                params.append('*')
+                render_kw_only_separator = False
+
+            params.append(formatted)
+
+        if render_pos_only_separator:
+            params.append('/')
+
+        return params
+
 
     def __lt__(self, other):
         # Push __init__ to the top.
