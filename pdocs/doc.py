@@ -286,7 +286,7 @@ class Module(Doc):
         """Returns `True` if this module represents a
            [namespace package](https://packaging.python.org/guides/packaging-namespace-packages/).
         """
-        return self.module.__spec__.origin in (None, 'namespace')
+        return self.module.__spec__.origin in (None, "namespace")
 
     def mro(self, cls):
         """
@@ -543,19 +543,19 @@ class Class(Doc):
 
         Unfortunately, this also includes class methods.
         """
-        return _filter(self.doc.values(), Function, attributes_set=("method", ))
+        return _filter(self.doc.values(), Function, attributes_set=("method",))
 
     def functions(self):
         """
         Returns all documented static functions as `pdoc.Function`
         objects in the class, sorted alphabetically.
         """
-        return _filter(self.doc.values(), Function, attributes_not_set=("method", ))
+        return _filter(self.doc.values(), Function, attributes_not_set=("method",))
 
     def params(self, annotate=False):
         """Returns back the parameters for the classes __init__ method"""
         params = Function._params(self.cls.__init__, annotate=annotate)
-        return params[1:] if params[0] == 'self' else params
+        return params[1:] if params[0] == "self" else params
 
     def _fill_inheritance(self):
         """
@@ -595,9 +595,11 @@ class Class(Doc):
 
     def mro(self):
         """Returns back the Method Resolution Order (MRO) for this class"""
-        return [self.module.find_class(cls)
-                for cls in inspect.getmro(self.cls)
-                if cls not in (self.cls, object, self)]
+        return [
+            self.module.find_class(cls)
+            for cls in inspect.getmro(self.cls)
+            if cls not in (self.cls, object, self)
+        ]
 
     def subclasses(self):
         """Returns back all subclasses of this class"""

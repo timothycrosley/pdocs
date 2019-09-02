@@ -172,7 +172,8 @@ If `__pdoc__[key] = None`, then `key` will not be included in the
 public interface of the module.
 """
 
-from pdocs.version import VERSION as __version__
+from pdocs.version import __version__
+
 """
 The current version of pdoc. This value is read from `setup.py`.
 """

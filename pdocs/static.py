@@ -80,6 +80,7 @@ def html_out(
             )
             p.write_text(out, encoding="utf-8")
 
+
 def md_out(
     dst: pathlib.Path,
     roots: typing.Sequence[pdocs.doc.Module],

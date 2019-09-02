@@ -16,7 +16,9 @@ pyident = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_.]+$")
 indent = re.compile(r"^\s*")
 
 _markdown = markdown.Markdown(
-    output_format="html5", extensions=defaults.MARKDOWN_EXTENSIONS, extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS
+    output_format="html5",
+    extensions=defaults.MARKDOWN_EXTENSIONS,
+    extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS,
 )
 
 
@@ -70,11 +72,7 @@ def linkify(parent, match, link_prefix):
     return "[`%s`](%s)" % (name, url)
 
 
-def mark(
-    text,
-    module_list=None,
-    linky=True,
-):
+def mark(text, module_list=None, linky=True):
     if linky:
         text, _ = re.subn("\b\n\b", " ", text)
     return _markdown_render(text.strip())

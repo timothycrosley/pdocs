@@ -6,7 +6,6 @@ import pdocs.doc
 import pdocs.extract
 import pdocs.render
 import pdocs.static
-import pdocs.version
 import pdocs.web
 
 parser = argparse.ArgumentParser(
