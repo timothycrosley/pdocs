@@ -230,9 +230,7 @@ class Module(Doc):
 
             # Functions and some weird builtins?, plus methods, classes,
             # modules and module level variables.
-            if inspect.isfunction(obj) or inspect.isbuiltin(obj):
-                self.doc[name] = Function(name, self, obj)
-            elif inspect.ismethod(obj):
+            if inspect.isroutine(obj):
                 self.doc[name] = Function(name, self, obj)
             elif inspect.isclass(obj):
                 self.doc[name] = Class(name, self, obj)
