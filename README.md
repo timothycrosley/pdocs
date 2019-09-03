@@ -19,7 +19,7 @@ generate Markdown or HTML of a module's public interface, or it can be used
 to run an HTTP server that serves generated HTML for installed modules.
 
 `pdocs` is an MIT Licensed fork of `pdoc` with the goal of staying true to the original vision
-layed out by the projects creator.
+layed out by the project's creator.
 
 NOTE: For most projects, the best way to use `pdocs` is using [portray](https://timothycrosley.github.io/portray/).
 
@@ -64,6 +64,6 @@ The following guides should get you up using pdocs in no time:
 I created `pdocs` to help power [portray](https://timothycrosley.github.io/portray/) while staying true to the original vision of `pdoc` and maintain
 MIT license compatibility. In the end I created it to help power better documentation websites for Python projects.
 
-I hope you too find `pdocs` useful!
+I hope you, too, find `pdocs` useful!
 
 ~Timothy Crosley
