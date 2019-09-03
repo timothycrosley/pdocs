@@ -1,0 +1,1428 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../../art/logo.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.2">
+    
+    
+      
+        <title>Html Helpers - pdocs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/application.30686662.css">
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7e57c2">
+      
+    
+    
+      <script src="../../../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="deep-purple" data-md-color-accent="pink">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#module-pdocshtml_helpers" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../.." title="pdocs" class="md-header-nav__button md-logo">
+          
+            <img src="../../../art/logo.png" width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              pdocs
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Html Helpers
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/timothycrosley/pdocs.git/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    timothycrosley/pdocs
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../.." title="pdocs" class="md-nav__button md-logo">
+      
+        <img src="../../../art/logo.png" width="48" height="48">
+      
+    </a>
+    pdocs
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/timothycrosley/pdocs.git/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    timothycrosley/pdocs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../.." title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../../CHANGELOG/" title="Changelog" class="md-nav__link">
+      Changelog
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3" checked>
+    
+    <label class="md-nav__link" for="nav-3">
+      Reference
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        Reference
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3-1" type="checkbox" id="nav-3-1" checked>
+    
+    <label class="md-nav__link" for="nav-3-1">
+      Pdocs
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-3-1">
+        Pdocs
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../api/" title="API" class="md-nav__link">
+      API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cli/" title="CLI" class="md-nav__link">
+      CLI
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../defaults/" title="Defaults" class="md-nav__link">
+      Defaults
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../doc/" title="Doc" class="md-nav__link">
+      Doc
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../extract/" title="Extract" class="md-nav__link">
+      Extract
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Html Helpers
+      </label>
+    
+    <a href="./" title="Html Helpers" class="md-nav__link md-nav__link--active">
+      Html Helpers
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean_source_lines" class="md-nav__link">
+    clean_source_lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode" class="md-nav__link">
+    decode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_url" class="md-nav__link">
+    external_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glimpse" class="md-nav__link">
+    glimpse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ident" class="md-nav__link">
+    ident
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_external_linkable" class="md-nav__link">
+    is_external_linkable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    link
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkify" class="md-nav__link">
+    linkify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    lookup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mark" class="md-nav__link">
+    mark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_url" class="md-nav__link">
+    module_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sourceid" class="md-nav__link">
+    sourceid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../" title="Index" class="md-nav__link">
+      Index
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../logo/" title="Logo" class="md-nav__link">
+      Logo
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../render/" title="Render" class="md-nav__link">
+      Render
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../static/" title="Static" class="md-nav__link">
+      Static
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    Variables
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#functions" class="md-nav__link">
+    Functions
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean_source_lines" class="md-nav__link">
+    clean_source_lines
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decode" class="md-nav__link">
+    decode
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#external_url" class="md-nav__link">
+    external_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glimpse" class="md-nav__link">
+    glimpse
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ident" class="md-nav__link">
+    ident
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is_external_linkable" class="md-nav__link">
+    is_external_linkable
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#link" class="md-nav__link">
+    link
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#linkify" class="md-nav__link">
+    linkify
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lookup" class="md-nav__link">
+    lookup
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mark" class="md-nav__link">
+    mark
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#module_url" class="md-nav__link">
+    module_url
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sourceid" class="md-nav__link">
+    sourceid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/timothycrosley/pdocs.git/edit/master/docs/reference/pdocs/html_helpers.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="module-pdocshtml_helpers">Module pdocs.html_helpers</h1>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="s s-Atom">import</span> <span class="s s-Atom">os</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">re</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">sys</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">markdown</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">pygments</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="s s-Atom">formatters</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="s s-Atom">lexers</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">doc</span>
+
+<span class="s s-Atom">import</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">render</span>
+
+<span class="s s-Atom">from</span> <span class="s s-Atom">pdocs</span> <span class="s s-Atom">import</span> <span class="s s-Atom">defaults</span>
+
+<span class="s s-Atom">#</span> <span class="nv">From</span> <span class="s s-Atom">language</span> <span class="s s-Atom">reference</span><span class="p">,</span> <span class="s s-Atom">but</span> <span class="s s-Atom">adds</span> <span class="s s-Atom">&#39;.&#39;</span> <span class="s s-Atom">to</span> <span class="s s-Atom">allow</span> <span class="s s-Atom">fully</span> <span class="s s-Atom">qualified</span> <span class="s s-Atom">names</span><span class="p">.</span>
+
+<span class="s s-Atom">pyident</span> <span class="o">=</span> <span class="s s-Atom">re</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="s s-Atom">r</span><span class="s2">&quot;^[a-zA-Z_][a-zA-Z0-9_.]+$&quot;</span><span class="p">)</span>
+
+<span class="s s-Atom">indent</span> <span class="o">=</span> <span class="s s-Atom">re</span><span class="p">.</span><span class="nf">compile</span><span class="p">(</span><span class="s s-Atom">r</span><span class="s2">&quot;^\s*&quot;</span><span class="p">)</span>
+
+<span class="k">_</span><span class="s s-Atom">markdown</span> <span class="o">=</span> <span class="s s-Atom">markdown</span><span class="p">.</span><span class="nv">Markdown</span><span class="p">(</span>
+
+    <span class="s s-Atom">output_format=</span><span class="s2">&quot;html5&quot;</span><span class="p">,</span>
+
+    <span class="s s-Atom">extensions</span><span class="o">=</span><span class="s s-Atom">defaults</span><span class="p">.</span><span class="nv">MARKDOWN_EXTENSIONS</span><span class="p">,</span>
+
+    <span class="s s-Atom">extension_configs</span><span class="o">=</span><span class="s s-Atom">defaults</span><span class="p">.</span><span class="nv">MARKDOWN_EXTENSION_CONFIGS</span><span class="p">,</span>
+
+<span class="p">)</span>
+
+<span class="s s-Atom">def</span> <span class="k">_</span><span class="nf">markdown_render</span><span class="p">(</span><span class="s s-Atom">text</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">return</span> <span class="k">_</span><span class="s s-Atom">markdown</span><span class="p">.</span><span class="nf">reset</span><span class="p">().</span><span class="nf">convert</span><span class="p">(</span><span class="s s-Atom">text</span><span class="p">)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">decode</span><span class="p">(</span><span class="s s-Atom">s</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span> <span class="s s-Atom">and</span> <span class="nf">isinstance</span><span class="p">(</span><span class="s s-Atom">s</span><span class="p">,</span> <span class="s s-Atom">str</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">s</span><span class="p">.</span><span class="nf">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">s</span>
+
+<span class="s s-Atom">def</span> <span class="nf">ident</span><span class="p">(</span><span class="s s-Atom">s</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">&#39;&lt;span class=&quot;ident&quot;&gt;%s&lt;/span&gt;&#39;</span> <span class="c1">% s</span>
+
+<span class="s s-Atom">def</span> <span class="nf">sourceid</span><span class="p">(</span><span class="s s-Atom">dobj</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">return</span> <span class="s2">&quot;source-%s&quot;</span> <span class="c1">% dobj.refname</span>
+
+<span class="s s-Atom">def</span> <span class="nf">clean_source_lines</span><span class="p">(</span><span class="s s-Atom">lines</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">  Cleans the source code so that pygments can render it well.</span>
+
+<span class="s2">  Returns one string with all of the source code.</span>
+
+<span class="s2">  &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">base_indent</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">indent</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="s s-Atom">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nf">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+    <span class="s s-Atom">base_indent</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="s s-Atom">for</span> <span class="s s-Atom">line</span> <span class="s s-Atom">in</span> <span class="nn">lines</span><span class="p">:</span>
+
+        <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">line</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="s s-Atom">:</span>
+
+            <span class="s s-Atom">base_indent</span> <span class="o">=</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">indent</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="s s-Atom">lines</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nf">group</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
+
+            <span class="s s-Atom">break</span>
+
+    <span class="s s-Atom">lines</span> <span class="o">=</span> <span class="p">[</span><span class="s s-Atom">line</span><span class="p">[</span><span class="s s-Atom">base_indent:</span><span class="p">]</span> <span class="s s-Atom">for</span> <span class="s s-Atom">line</span> <span class="s s-Atom">in</span> <span class="s s-Atom">lines</span><span class="p">]</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">sys</span><span class="p">.</span><span class="s s-Atom">version_info</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">pylex</span> <span class="o">=</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="s s-Atom">lexers</span><span class="p">.</span><span class="nv">PythonLexer</span><span class="p">()</span>
+
+    <span class="nn">else</span><span class="p">:</span>
+
+        <span class="s s-Atom">pylex</span> <span class="o">=</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="s s-Atom">lexers</span><span class="p">.</span><span class="nv">Python3Lexer</span><span class="p">()</span>
+
+    <span class="s s-Atom">htmlform</span> <span class="o">=</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="s s-Atom">formatters</span><span class="p">.</span><span class="nv">HtmlFormatter</span><span class="p">(</span><span class="s s-Atom">cssclass=</span><span class="s2">&quot;codehilite&quot;</span><span class="p">)</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">pygments</span><span class="p">.</span><span class="nf">highlight</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="s s-Atom">lines</span><span class="p">),</span> <span class="s s-Atom">pylex</span><span class="p">,</span> <span class="s s-Atom">htmlform</span><span class="p">)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">match</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">matched</span> <span class="o">=</span> <span class="s s-Atom">match</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="s s-Atom">ident</span> <span class="o">=</span> <span class="s s-Atom">matched</span><span class="p">[</span><span class="mi">1</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="s s-Atom">name</span><span class="p">,</span> <span class="s s-Atom">url</span> <span class="o">=</span> <span class="nf">lookup</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">ident</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">name</span> <span class="o">is</span> <span class="nv">None</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">matched</span>
+
+    <span class="s s-Atom">return</span> <span class="s2">&quot;[`%s`](%s)&quot;</span> <span class="c1">% (name, url)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">mark</span><span class="p">(</span><span class="s s-Atom">text</span><span class="p">,</span> <span class="s s-Atom">module_list</span><span class="o">=</span><span class="nv">None</span><span class="p">,</span> <span class="s s-Atom">linky</span><span class="o">=</span><span class="nv">True</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">if</span> <span class="nn">linky</span><span class="p">:</span>
+
+        <span class="s s-Atom">text</span><span class="p">,</span> <span class="k">_</span> <span class="o">=</span> <span class="s s-Atom">re</span><span class="p">.</span><span class="nf">subn</span><span class="p">(</span><span class="s2">&quot;\b\n\b&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="s s-Atom">text</span><span class="p">)</span>
+
+    <span class="s s-Atom">return</span> <span class="k">_</span><span class="nf">markdown_render</span><span class="p">(</span><span class="s s-Atom">text</span><span class="p">.</span><span class="nf">strip</span><span class="p">())</span>
+
+<span class="s s-Atom">def</span> <span class="nf">glimpse</span><span class="p">(</span><span class="s s-Atom">s</span><span class="p">,</span> <span class="s s-Atom">length</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">s</span><span class="p">)</span> <span class="o">&lt;</span> <span class="nn">length</span><span class="p">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">s</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">s</span><span class="p">[</span><span class="mi">0</span><span class="s s-Atom">:length</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;...&quot;</span>
+
+<span class="s s-Atom">def</span> <span class="nf">module_url</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">m</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Returns a URL for `m`, which must be an instance of `Module`.</span>
+
+<span class="s2">        Also, `m` must be a submodule of the module being documented.</span>
+
+<span class="s2">        Namely, &#39;.&#39; import separators are replaced with &#39;/&#39; URL</span>
+
+<span class="s2">        separators. Also, packages are translated as directories</span>
+
+<span class="s2">        containing `index.html` corresponding to the `__init__` module,</span>
+
+<span class="s2">        while modules are translated as regular HTML files with an</span>
+
+<span class="s2">        `.m.html` suffix. (Given default values of</span>
+
+<span class="s2">        `pdoc.html_module_suffix` and `pdoc.html_package_name`.)</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">parent</span><span class="p">.</span><span class="s s-Atom">name</span> <span class="o">==</span> <span class="s s-Atom">m</span><span class="p">.</span><span class="nn">name</span><span class="p">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="s s-Atom">base</span> <span class="o">=</span> <span class="s s-Atom">m</span><span class="p">.</span><span class="s s-Atom">name</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="nf">len</span><span class="p">(</span><span class="s s-Atom">link_prefix</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">base</span> <span class="o">=</span> <span class="s s-Atom">os</span><span class="p">.</span><span class="s s-Atom">path</span><span class="p">.</span><span class="nf">relpath</span><span class="p">(</span><span class="s s-Atom">base</span><span class="p">,</span> <span class="s s-Atom">parent</span><span class="p">.</span><span class="s s-Atom">name</span><span class="p">.</span><span class="nf">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">))</span>
+
+    <span class="s s-Atom">url</span> <span class="o">=</span> <span class="s s-Atom">base</span><span class="p">[</span><span class="nf">len</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)</span> <span class="s s-Atom">:</span><span class="p">]</span> <span class="s s-Atom">if</span> <span class="s s-Atom">base</span><span class="p">.</span><span class="nf">startswith</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)</span> <span class="s s-Atom">else</span> <span class="s2">&quot;&quot;</span> <span class="s s-Atom">if</span> <span class="s s-Atom">base</span> <span class="o">==</span> <span class="s2">&quot;..&quot;</span> <span class="s s-Atom">else</span> <span class="s s-Atom">base</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">m</span><span class="p">.</span><span class="nn">submodules</span><span class="p">:</span>
+
+        <span class="s s-Atom">index</span> <span class="o">=</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">render</span><span class="p">.</span><span class="s s-Atom">html_package_name</span>
+
+        <span class="s s-Atom">url</span> <span class="o">=</span> <span class="s s-Atom">url</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="s s-Atom">index</span> <span class="s s-Atom">if</span> <span class="s s-Atom">url</span> <span class="s s-Atom">else</span> <span class="s s-Atom">index</span>
+
+    <span class="nn">else</span><span class="p">:</span>
+
+        <span class="s s-Atom">url</span> <span class="s s-Atom">+=</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">render</span><span class="p">.</span><span class="s s-Atom">html_module_suffix</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">link_prefix</span> <span class="o">+</span> <span class="s s-Atom">url</span>
+
+<span class="s s-Atom">def</span> <span class="nf">external_url</span><span class="p">(</span><span class="s s-Atom">refname</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Attempts to guess an absolute URL for the external identifier</span>
+
+<span class="s2">        given.</span>
+
+<span class="s2">        Note that this just returns the refname with an &quot;</span><span class="p">.</span><span class="s s-Atom">ext</span><span class="s2">&quot; suffix.</span>
+
+<span class="s2">        It will be up to whatever is interpreting the URLs to map it</span>
+
+<span class="s2">        to an appropriate documentation page.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">return</span> <span class="s2">&quot;/%s.ext&quot;</span> <span class="c1">% refname</span>
+
+<span class="s s-Atom">def</span> <span class="nf">is_external_linkable</span><span class="p">(</span><span class="s s-Atom">name</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">pyident</span><span class="p">.</span><span class="nf">match</span><span class="p">(</span><span class="s s-Atom">name</span><span class="p">)</span> <span class="s s-Atom">and</span> <span class="s2">&quot;.&quot;</span> <span class="s s-Atom">in</span> <span class="s s-Atom">name</span>
+
+<span class="s s-Atom">def</span> <span class="nf">lookup</span><span class="p">(</span><span class="s s-Atom">module</span><span class="p">,</span> <span class="s s-Atom">refname</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        Given a fully qualified identifier name, return its refname</span>
+
+<span class="s2">        with respect to the current module and a value for a `href`</span>
+
+<span class="s2">        attribute. If `refname` is not in the public interface of</span>
+
+<span class="s2">        this module or its submodules, then `None` is returned for</span>
+
+<span class="s2">        both return values. (Unless this module has enabled external</span>
+
+<span class="s2">        linking.)</span>
+
+<span class="s2">        In particular, this takes into account sub-modules and external</span>
+
+<span class="s2">        identifiers. If `refname` is in the public API of the current</span>
+
+<span class="s2">        module, then a local anchor link is given. If `refname` is in the</span>
+
+<span class="s2">        public API of a sub-module, then a link to a different page with</span>
+
+<span class="s2">        the appropriate anchor is given. Otherwise, `refname` is</span>
+
+<span class="s2">        considered external and no link is used.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">d</span> <span class="o">=</span> <span class="s s-Atom">module</span><span class="p">.</span><span class="nf">find_ident</span><span class="p">(</span><span class="s s-Atom">refname</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">,</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">doc</span><span class="p">.</span><span class="nv">External</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">if</span> <span class="nf">is_external_linkable</span><span class="p">(</span><span class="s s-Atom">refname</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+            <span class="s s-Atom">return</span> <span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">refname</span><span class="p">,</span> <span class="nf">external_url</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">refname</span><span class="p">)</span>
+
+        <span class="nn">else</span><span class="p">:</span>
+
+            <span class="s s-Atom">return</span> <span class="nv">None</span><span class="p">,</span> <span class="nv">None</span>
+
+    <span class="s s-Atom">if</span> <span class="nf">isinstance</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">,</span> <span class="s s-Atom">pdocs</span><span class="p">.</span><span class="s s-Atom">doc</span><span class="p">.</span><span class="nv">Module</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">refname</span><span class="p">,</span> <span class="nf">module_url</span><span class="p">(</span><span class="s s-Atom">module</span><span class="p">,</span> <span class="s s-Atom">d</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">module</span><span class="p">.</span><span class="nf">is_public</span><span class="p">(</span><span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">refname</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">name</span><span class="p">,</span> <span class="s2">&quot;#%s&quot;</span> <span class="c1">% d.refname</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">d</span><span class="p">.</span><span class="s s-Atom">refname</span><span class="p">,</span> <span class="s2">&quot;%s#%s&quot;</span> <span class="c1">% (module_url(module, d.module, link_prefix), d.refname)</span>
+
+<span class="s s-Atom">def</span> <span class="nf">link</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">refname</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+<span class="s2">        A convenience wrapper around `href` to produce the full</span>
+
+<span class="s2">        `a` tag if `refname` is found. Otherwise, plain text of</span>
+
+<span class="s2">        `refname` is returned.</span>
+
+<span class="s2">    &quot;&quot;&quot;</span>
+
+    <span class="s s-Atom">name</span><span class="p">,</span> <span class="s s-Atom">url</span> <span class="o">=</span> <span class="nf">lookup</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">refname</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">name</span> <span class="o">is</span> <span class="nv">None</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">refname</span>
+
+    <span class="s s-Atom">return</span> <span class="s s-Atom">&#39;&lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&#39;</span> <span class="c1">% (url, name)</span>
+</pre></div>
+
+
+</details>
+<h2 id="variables">Variables</h2>
+<div class="codehilite"><pre><span></span><span class="n">indent</span>
+</pre></div>
+
+
+<div class="codehilite"><pre><span></span><span class="n">pyident</span>
+</pre></div>
+
+
+<h2 id="functions">Functions</h2>
+<h5 id="clean_source_lines">clean_source_lines</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">lines</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Cleans the source code so that pygments can render it well.</p>
+<p>Returns one string with all of the source code.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">clean_source_lines</span><span class="ss">(</span><span class="nv">lines</span><span class="ss">)</span>:
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+  <span class="nv">Cleans</span> <span class="nv">the</span> <span class="nv">source</span> <span class="nv">code</span> <span class="nv">so</span> <span class="nv">that</span> <span class="nv">pygments</span> <span class="nv">can</span> <span class="nv">render</span> <span class="nv">it</span> <span class="nv">well</span>.
+
+  <span class="nv">Returns</span> <span class="nv">one</span> <span class="nv">string</span> <span class="nv">with</span> <span class="nv">all</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">source</span> <span class="nv">code</span>.
+
+  <span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="nv">base_indent</span> <span class="o">=</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">indent</span>.<span class="nv">match</span><span class="ss">(</span><span class="nv">lines</span>[<span class="mi">0</span>]<span class="ss">)</span>.<span class="nv">group</span><span class="ss">(</span><span class="mi">0</span><span class="ss">))</span>
+
+    <span class="nv">base_indent</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">for</span> <span class="nv">line</span> <span class="nv">in</span> <span class="nv">lines</span>:
+
+        <span class="k">if</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">line</span>.<span class="nv">strip</span><span class="ss">())</span> <span class="o">&gt;</span> <span class="mi">0</span>:
+
+            <span class="nv">base_indent</span> <span class="o">=</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">indent</span>.<span class="nv">match</span><span class="ss">(</span><span class="nv">lines</span>[<span class="mi">0</span>]<span class="ss">)</span>.<span class="nv">group</span><span class="ss">(</span><span class="mi">0</span><span class="ss">))</span>
+
+            <span class="k">break</span>
+
+    <span class="nv">lines</span> <span class="o">=</span> [<span class="nv">line</span>[<span class="nv">base_indent</span>:] <span class="k">for</span> <span class="nv">line</span> <span class="nv">in</span> <span class="nv">lines</span>]
+
+    <span class="k">if</span> <span class="nv">sys</span>.<span class="nv">version_info</span>[<span class="mi">0</span>] <span class="o">&lt;</span> <span class="mi">3</span>:
+
+        <span class="nv">pylex</span> <span class="o">=</span> <span class="nv">pygments</span>.<span class="nv">lexers</span>.<span class="nv">PythonLexer</span><span class="ss">()</span>
+
+    <span class="k">else</span>:
+
+        <span class="nv">pylex</span> <span class="o">=</span> <span class="nv">pygments</span>.<span class="nv">lexers</span>.<span class="nv">Python3Lexer</span><span class="ss">()</span>
+
+    <span class="nv">htmlform</span> <span class="o">=</span> <span class="nv">pygments</span>.<span class="nv">formatters</span>.<span class="nv">HtmlFormatter</span><span class="ss">(</span><span class="nv">cssclass</span><span class="o">=</span><span class="s2">&quot;</span><span class="s">codehilite</span><span class="s2">&quot;</span><span class="ss">)</span>
+
+    <span class="k">return</span> <span class="nv">pygments</span>.<span class="nv">highlight</span><span class="ss">(</span><span class="s2">&quot;&quot;</span>.<span class="nv">join</span><span class="ss">(</span><span class="nv">lines</span><span class="ss">)</span>, <span class="nv">pylex</span>, <span class="nv">htmlform</span><span class="ss">)</span>
+</pre></div>
+
+
+</details>
+<h5 id="decode">decode</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">s</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">decode</span><span class="ss">(</span><span class="nv">s</span><span class="ss">)</span>:
+
+    <span class="k">if</span> <span class="nv">sys</span>.<span class="nv">version_info</span>[<span class="mi">0</span>] <span class="o">&lt;</span> <span class="mi">3</span> <span class="nv">and</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">s</span>, <span class="nv">str</span><span class="ss">)</span>:
+
+        <span class="k">return</span> <span class="nv">s</span>.<span class="nv">decode</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">utf-8</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s">ignore</span><span class="s2">&quot;</span><span class="ss">)</span>
+
+    <span class="k">return</span> <span class="nv">s</span>
+</pre></div>
+
+
+</details>
+<h5 id="external_url">external_url</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">refname</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Attempts to guess an absolute URL for the external identifier
+given.</p>
+<p>Note that this just returns the refname with an ".ext" suffix.
+It will be up to whatever is interpreting the URLs to map it
+to an appropriate documentation page.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">external_url</span><span class="ss">(</span><span class="nv">refname</span><span class="ss">)</span>:
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+        <span class="nv">Attempts</span> <span class="nv">to</span> <span class="nv">guess</span> <span class="nv">an</span> <span class="nv">absolute</span> <span class="nv">URL</span> <span class="k">for</span> <span class="nv">the</span> <span class="nv">external</span> <span class="nv">identifier</span>
+
+        <span class="nv">given</span>.
+
+        <span class="nv">Note</span> <span class="nv">that</span> <span class="nv">this</span> <span class="nv">just</span> <span class="nv">returns</span> <span class="nv">the</span> <span class="nv">refname</span> <span class="nv">with</span> <span class="nv">an</span> <span class="s2">&quot;</span><span class="s">.ext</span><span class="s2">&quot;</span> <span class="nv">suffix</span>.
+
+        <span class="nv">It</span> <span class="nv">will</span> <span class="nv">be</span> <span class="nv">up</span> <span class="nv">to</span> <span class="nv">whatever</span> <span class="nv">is</span> <span class="nv">interpreting</span> <span class="nv">the</span> <span class="nv">URLs</span> <span class="nv">to</span> <span class="nv">map</span> <span class="nv">it</span>
+
+        <span class="nv">to</span> <span class="nv">an</span> <span class="nv">appropriate</span> <span class="nv">documentation</span> <span class="nv">page</span>.
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="s">/%s.ext</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nv">refname</span>
+</pre></div>
+
+
+</details>
+<h5 id="glimpse">glimpse</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">s</span><span class="p">,</span>
+    <span class="n">length</span><span class="o">=</span><span class="mi">100</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">glimpse</span><span class="ss">(</span><span class="nv">s</span>, <span class="nv">length</span><span class="o">=</span><span class="mi">100</span><span class="ss">)</span>:
+
+    <span class="k">if</span> <span class="nv">len</span><span class="ss">(</span><span class="nv">s</span><span class="ss">)</span> <span class="o">&lt;</span> <span class="nv">length</span>:
+
+        <span class="k">return</span> <span class="nv">s</span>
+
+    <span class="k">return</span> <span class="nv">s</span>[<span class="mi">0</span>:<span class="nv">length</span>] <span class="o">+</span> <span class="s2">&quot;</span><span class="s">...</span><span class="s2">&quot;</span>
+</pre></div>
+
+
+</details>
+<h5 id="ident">ident</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">s</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">ident</span><span class="ss">(</span><span class="nv">s</span><span class="ss">)</span>:
+
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="s">&lt;span class=&quot;ident&quot;&gt;%s&lt;/span&gt;</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nv">s</span>
+</pre></div>
+
+
+</details>
+<h5 id="is_external_linkable">is_external_linkable</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">name</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">is_external_linkable</span><span class="ss">(</span><span class="nv">name</span><span class="ss">)</span>:
+
+    <span class="k">return</span> <span class="nv">pyident</span>.<span class="nv">match</span><span class="ss">(</span><span class="nv">name</span><span class="ss">)</span> <span class="nv">and</span> <span class="s2">&quot;</span><span class="s">.</span><span class="s2">&quot;</span> <span class="nv">in</span> <span class="nv">name</span>
+</pre></div>
+
+
+</details>
+<h5 id="link">link</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">parent</span><span class="p">,</span>
+    <span class="n">refname</span><span class="p">,</span>
+    <span class="n">link_prefix</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>A convenience wrapper around <code>href</code> to produce the full
+<code>a</code> tag if <code>refname</code> is found. Otherwise, plain text of
+<code>refname</code> is returned.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">link</span><span class="ss">(</span><span class="nv">parent</span>, <span class="nv">refname</span>, <span class="nv">link_prefix</span><span class="ss">)</span>:
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+        <span class="nv">A</span> <span class="nv">convenience</span> <span class="nv">wrapper</span> <span class="nv">around</span> `<span class="nv">href</span>` <span class="nv">to</span> <span class="nv">produce</span> <span class="nv">the</span> <span class="nv">full</span>
+
+        `<span class="nv">a</span>` <span class="nv">tag</span> <span class="k">if</span> `<span class="nv">refname</span>` <span class="nv">is</span> <span class="nv">found</span>. <span class="nv">Otherwise</span>, <span class="nv">plain</span> <span class="nv">text</span> <span class="nv">of</span>
+
+        `<span class="nv">refname</span>` <span class="nv">is</span> <span class="nv">returned</span>.
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="nv">name</span>, <span class="nv">url</span> <span class="o">=</span> <span class="nv">lookup</span><span class="ss">(</span><span class="nv">parent</span>, <span class="nv">refname</span>, <span class="nv">link_prefix</span><span class="ss">)</span>
+
+    <span class="k">if</span> <span class="nv">name</span> <span class="nv">is</span> <span class="nv">None</span>:
+
+        <span class="k">return</span> <span class="nv">refname</span>
+
+    <span class="k">return</span> <span class="s1">&#39;</span><span class="s">&lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="ss">(</span><span class="nv">url</span>, <span class="nv">name</span><span class="ss">)</span>
+</pre></div>
+
+
+</details>
+<h5 id="linkify">linkify</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">parent</span><span class="p">,</span>
+    <span class="n">match</span><span class="p">,</span>
+    <span class="n">link_prefix</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="s s-Atom">def</span> <span class="nf">linkify</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">match</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span><span class="s s-Atom">:</span>
+
+    <span class="s s-Atom">matched</span> <span class="o">=</span> <span class="s s-Atom">match</span><span class="p">.</span><span class="nf">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="s s-Atom">ident</span> <span class="o">=</span> <span class="s s-Atom">matched</span><span class="p">[</span><span class="mi">1</span><span class="p">:-</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="s s-Atom">name</span><span class="p">,</span> <span class="s s-Atom">url</span> <span class="o">=</span> <span class="nf">lookup</span><span class="p">(</span><span class="s s-Atom">parent</span><span class="p">,</span> <span class="s s-Atom">ident</span><span class="p">,</span> <span class="s s-Atom">link_prefix</span><span class="p">)</span>
+
+    <span class="s s-Atom">if</span> <span class="s s-Atom">name</span> <span class="o">is</span> <span class="nv">None</span><span class="s s-Atom">:</span>
+
+        <span class="s s-Atom">return</span> <span class="s s-Atom">matched</span>
+
+    <span class="s s-Atom">return</span> <span class="s2">&quot;[`%s`](%s)&quot;</span> <span class="c1">% (name, url)</span>
+</pre></div>
+
+
+</details>
+<h5 id="lookup">lookup</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">module</span><span class="p">,</span>
+    <span class="n">refname</span><span class="p">,</span>
+    <span class="n">link_prefix</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Given a fully qualified identifier name, return its refname
+with respect to the current module and a value for a <code>href</code>
+attribute. If <code>refname</code> is not in the public interface of
+this module or its submodules, then <code>None</code> is returned for
+both return values. (Unless this module has enabled external
+linking.)</p>
+<p>In particular, this takes into account sub-modules and external
+identifiers. If <code>refname</code> is in the public API of the current
+module, then a local anchor link is given. If <code>refname</code> is in the
+public API of a sub-module, then a link to a different page with
+the appropriate anchor is given. Otherwise, <code>refname</code> is
+considered external and no link is used.</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">lookup</span><span class="ss">(</span><span class="nv">module</span>, <span class="nv">refname</span>, <span class="nv">link_prefix</span><span class="ss">)</span>:
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+        <span class="nv">Given</span> <span class="nv">a</span> <span class="nv">fully</span> <span class="nv">qualified</span> <span class="nv">identifier</span> <span class="nv">name</span>, <span class="k">return</span> <span class="nv">its</span> <span class="nv">refname</span>
+
+        <span class="nv">with</span> <span class="nv">respect</span> <span class="nv">to</span> <span class="nv">the</span> <span class="nv">current</span> <span class="nv">module</span> <span class="nv">and</span> <span class="nv">a</span> <span class="nv">value</span> <span class="k">for</span> <span class="nv">a</span> `<span class="nv">href</span>`
+
+        <span class="nv">attribute</span>. <span class="k">If</span> `<span class="nv">refname</span>` <span class="nv">is</span> <span class="nv">not</span> <span class="nv">in</span> <span class="nv">the</span> <span class="nv">public</span> <span class="nv">interface</span> <span class="nv">of</span>
+
+        <span class="nv">this</span> <span class="nv">module</span> <span class="nv">or</span> <span class="nv">its</span> <span class="nv">submodules</span>, <span class="k">then</span> `<span class="nv">None</span>` <span class="nv">is</span> <span class="nv">returned</span> <span class="k">for</span>
+
+        <span class="nv">both</span> <span class="k">return</span> <span class="nv">values</span>. <span class="ss">(</span><span class="nv">Unless</span> <span class="nv">this</span> <span class="nv">module</span> <span class="nv">has</span> <span class="nv">enabled</span> <span class="nv">external</span>
+
+        <span class="nv">linking</span>.<span class="ss">)</span>
+
+        <span class="nv">In</span> <span class="nv">particular</span>, <span class="nv">this</span> <span class="nv">takes</span> <span class="nv">into</span> <span class="nv">account</span> <span class="nv">sub</span><span class="o">-</span><span class="nv">modules</span> <span class="nv">and</span> <span class="nv">external</span>
+
+        <span class="nv">identifiers</span>. <span class="k">If</span> `<span class="nv">refname</span>` <span class="nv">is</span> <span class="nv">in</span> <span class="nv">the</span> <span class="nv">public</span> <span class="nv">API</span> <span class="nv">of</span> <span class="nv">the</span> <span class="nv">current</span>
+
+        <span class="nv">module</span>, <span class="k">then</span> <span class="nv">a</span> <span class="nv">local</span> <span class="nv">anchor</span> <span class="nv">link</span> <span class="nv">is</span> <span class="nv">given</span>. <span class="k">If</span> `<span class="nv">refname</span>` <span class="nv">is</span> <span class="nv">in</span> <span class="nv">the</span>
+
+        <span class="nv">public</span> <span class="nv">API</span> <span class="nv">of</span> <span class="nv">a</span> <span class="nv">sub</span><span class="o">-</span><span class="nv">module</span>, <span class="k">then</span> <span class="nv">a</span> <span class="nv">link</span> <span class="nv">to</span> <span class="nv">a</span> <span class="nv">different</span> <span class="nv">page</span> <span class="nv">with</span>
+
+        <span class="nv">the</span> <span class="nv">appropriate</span> <span class="nv">anchor</span> <span class="nv">is</span> <span class="nv">given</span>. <span class="nv">Otherwise</span>, `<span class="nv">refname</span>` <span class="nv">is</span>
+
+        <span class="nv">considered</span> <span class="nv">external</span> <span class="nv">and</span> <span class="nv">no</span> <span class="nv">link</span> <span class="nv">is</span> <span class="nv">used</span>.
+
+    <span class="s2">&quot;&quot;&quot;</span>
+
+    <span class="nv">d</span> <span class="o">=</span> <span class="nv">module</span>.<span class="nv">find_ident</span><span class="ss">(</span><span class="nv">refname</span><span class="ss">)</span>
+
+    <span class="k">if</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">d</span>, <span class="nv">pdocs</span>.<span class="nv">doc</span>.<span class="nv">External</span><span class="ss">)</span>:
+
+        <span class="k">if</span> <span class="nv">is_external_linkable</span><span class="ss">(</span><span class="nv">refname</span><span class="ss">)</span>:
+
+            <span class="k">return</span> <span class="nv">d</span>.<span class="nv">refname</span>, <span class="nv">external_url</span><span class="ss">(</span><span class="nv">d</span>.<span class="nv">refname</span><span class="ss">)</span>
+
+        <span class="k">else</span>:
+
+            <span class="k">return</span> <span class="nv">None</span>, <span class="nv">None</span>
+
+    <span class="k">if</span> <span class="nv">isinstance</span><span class="ss">(</span><span class="nv">d</span>, <span class="nv">pdocs</span>.<span class="nv">doc</span>.<span class="nv">Module</span><span class="ss">)</span>:
+
+        <span class="k">return</span> <span class="nv">d</span>.<span class="nv">refname</span>, <span class="nv">module_url</span><span class="ss">(</span><span class="nv">module</span>, <span class="nv">d</span>, <span class="nv">link_prefix</span><span class="ss">)</span>
+
+    <span class="k">if</span> <span class="nv">module</span>.<span class="nv">is_public</span><span class="ss">(</span><span class="nv">d</span>.<span class="nv">refname</span><span class="ss">)</span>:
+
+        <span class="k">return</span> <span class="nv">d</span>.<span class="nv">name</span>, <span class="s2">&quot;</span><span class="s">#%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nv">d</span>.<span class="nv">refname</span>
+
+    <span class="k">return</span> <span class="nv">d</span>.<span class="nv">refname</span>, <span class="s2">&quot;</span><span class="s">%s#%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="ss">(</span><span class="nv">module_url</span><span class="ss">(</span><span class="nv">module</span>, <span class="nv">d</span>.<span class="nv">module</span>, <span class="nv">link_prefix</span><span class="ss">)</span>, <span class="nv">d</span>.<span class="nv">refname</span><span class="ss">)</span>
+</pre></div>
+
+
+</details>
+<h5 id="mark">mark</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">text</span><span class="p">,</span>
+    <span class="n">module_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">linky</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">mark</span><span class="ss">(</span><span class="nv">text</span>, <span class="nv">module_list</span><span class="o">=</span><span class="nv">None</span>, <span class="nv">linky</span><span class="o">=</span><span class="nv">True</span><span class="ss">)</span>:
+
+    <span class="k">if</span> <span class="nv">linky</span>:
+
+        <span class="nv">text</span>, <span class="nv">_</span> <span class="o">=</span> <span class="nv">re</span>.<span class="nv">subn</span><span class="ss">(</span><span class="s2">&quot;</span><span class="s">\b</span><span class="se">\n</span><span class="s">\b</span><span class="s2">&quot;</span>, <span class="s2">&quot;</span><span class="s"> </span><span class="s2">&quot;</span>, <span class="nv">text</span><span class="ss">)</span>
+
+    <span class="k">return</span> <span class="nv">_markdown_render</span><span class="ss">(</span><span class="nv">text</span>.<span class="nv">strip</span><span class="ss">())</span>
+</pre></div>
+
+
+</details>
+<h5 id="module_url">module_url</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">parent</span><span class="p">,</span>
+    <span class="n">m</span><span class="p">,</span>
+    <span class="n">link_prefix</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<p>Returns a URL for <code>m</code>, which must be an instance of <code>Module</code>.
+Also, <code>m</code> must be a submodule of the module being documented.</p>
+<p>Namely, '.' import separators are replaced with '/' URL
+separators. Also, packages are translated as directories
+containing <code>index.html</code> corresponding to the <code>__init__</code> module,
+while modules are translated as regular HTML files with an
+<code>.m.html</code> suffix. (Given default values of
+<code>pdoc.html_module_suffix</code> and <code>pdoc.html_package_name</code>.)</p>
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">module_url</span><span class="p">(</span><span class="n">parent</span><span class="p">,</span> <span class="n">m</span><span class="p">,</span> <span class="n">link_prefix</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+
+<span class="sd">        Returns a URL for `m`, which must be an instance of `Module`.</span>
+
+<span class="sd">        Also, `m` must be a submodule of the module being documented.</span>
+
+<span class="sd">        Namely, &#39;.&#39; import separators are replaced with &#39;/&#39; URL</span>
+
+<span class="sd">        separators. Also, packages are translated as directories</span>
+
+<span class="sd">        containing `index.html` corresponding to the `__init__` module,</span>
+
+<span class="sd">        while modules are translated as regular HTML files with an</span>
+
+<span class="sd">        `.m.html` suffix. (Given default values of</span>
+
+<span class="sd">        `pdoc.html_module_suffix` and `pdoc.html_package_name`.)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">parent</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>
+
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="n">base</span> <span class="o">=</span> <span class="n">m</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">link_prefix</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+
+        <span class="n">base</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">parent</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">))</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="n">base</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)</span> <span class="p">:]</span> <span class="k">if</span> <span class="n">base</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;../&quot;</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span> <span class="k">if</span> <span class="n">base</span> <span class="o">==</span> <span class="s2">&quot;..&quot;</span> <span class="k">else</span> <span class="n">base</span>
+
+    <span class="k">if</span> <span class="n">m</span><span class="o">.</span><span class="n">submodules</span><span class="p">:</span>
+
+        <span class="n">index</span> <span class="o">=</span> <span class="n">pdocs</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">html_package_name</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="n">url</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">index</span> <span class="k">if</span> <span class="n">url</span> <span class="k">else</span> <span class="n">index</span>
+
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="n">url</span> <span class="o">+=</span> <span class="n">pdocs</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">html_module_suffix</span>
+
+    <span class="k">return</span> <span class="n">link_prefix</span> <span class="o">+</span> <span class="n">url</span>
+</pre></div>
+
+
+</details>
+<h5 id="sourceid">sourceid</h5>
+<div class="codehilite"><pre><span></span><span class="k">def</span> <span class="err">(</span>
+    <span class="n">dobj</span>
+<span class="p">)</span>
+</pre></div>
+
+
+<details class="example"><summary>View Source</summary><div class="codehilite"><pre><span></span><span class="nv">def</span> <span class="nv">sourceid</span><span class="ss">(</span><span class="nv">dobj</span><span class="ss">)</span>:
+
+    <span class="k">return</span> <span class="s2">&quot;</span><span class="s">source-%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nv">dobj</span>.<span class="nv">refname</span>
+</pre></div>
+
+
+</details>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../extract/" title="Extract" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Extract
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../" title="Index" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Index
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Powered by
+        <a href="http://timothycrosley.github.io/portray">portray.</a>
+        You too can
+        <a href="http://timothycrosley.github.io/portray">
+          portray</a>
+        your Python project well using automatic documentation.
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../../assets/javascripts/application.c648116f.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../../.."}})</script>
+      
+    
+  </body>
+</html>
