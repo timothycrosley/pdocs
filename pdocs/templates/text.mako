@@ -124,8 +124,8 @@ ${module.docstring}
 
 % if show_source_code and module.source:
 
-    ??? example "View Source"
-            ${"\n        ".join(module.source)}
+??? example "View Source"
+        ${"\n        ".join(module.source)}
 
 % endif
 
