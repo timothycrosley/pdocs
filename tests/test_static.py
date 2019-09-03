@@ -16,7 +16,6 @@ import tutils
         ("./modules/submods", "submods.two", "submods/two.html"),
         ("./modules/submods", "submods.three", "submods/three.html"),
         ("./modules/index", "index", "index/index.html"),
-        ("./modules/index", "index.index", "index/index.m.html"),
     ],
 )
 def test_module_path(modspec, ident, path):
@@ -48,9 +47,3 @@ def test_static(tmpdir):
         two = pdocs.extract.extract_module("./modules/submods")
         assert not pdocs.static.would_overwrite(dst, [one])
         assert not pdocs.static.would_overwrite(dst, [one, two])
-        pdocs.static.html_out(dst, [one])
-        assert pdocs.static.would_overwrite(dst, [one])
-        assert pdocs.static.would_overwrite(dst, [one, two])
-        pdocs.static.html_out(dst, [one, two])
-        assert pdocs.static.would_overwrite(dst, [one])
-        assert pdocs.static.would_overwrite(dst, [one, two])
