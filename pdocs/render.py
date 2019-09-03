@@ -76,9 +76,7 @@ def html_module(
     return t.strip()
 
 
-def text(
-    mod: pdocs.doc.Module, source: bool=True
-) -> str:
+def text(mod: pdocs.doc.Module, source: bool = True) -> str:
     """Returns the documentation for the module `module_name` in plain
     text format. The module must be importable.
 

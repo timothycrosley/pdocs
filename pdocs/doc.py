@@ -749,22 +749,21 @@ class Function(Doc):
             if kind == inspect._POSITIONAL_ONLY:
                 render_pos_only_separator = True
             elif render_pos_only_separator:
-                params.append('/')
+                params.append("/")
                 render_pos_only_separator = False
 
             if kind == inspect._VAR_POSITIONAL:
                 render_kw_only_separator = False
             elif kind == inspect._KEYWORD_ONLY and render_kw_only_separator:
-                params.append('*')
+                params.append("*")
                 render_kw_only_separator = False
 
             params.append(str(param))
 
         if render_pos_only_separator:
-            params.append('/')
+            params.append("/")
 
         return params
-
 
     def __lt__(self, other):
         # Push __init__ to the top.

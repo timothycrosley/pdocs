@@ -173,7 +173,4 @@ public interface of the module.
 """
 
 from pdocs._version import __version__
-
-"""
-The current version of pdoc. This value is read from `setup.py`.
-"""
+from pdocs.api import as_html, as_markdown, server
