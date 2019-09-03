@@ -18,6 +18,6 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 Changelog
 =========
 
-## 1.0.0 - TBD
+## 1.0.0 - September 2nd 2019
 Initial API stable release of pdocs
 
