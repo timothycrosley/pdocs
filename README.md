@@ -64,6 +64,6 @@ The following guides should get you up using pdocs in no time:
 I created `pdocs` to help power [portray](https://timothycrosley.github.io/portray/) while staying true to the original vision of `pdoc` and maintain
 MIT license compatibility. In the end I created it to help power better documentation websites for Python projects.
 
-Thanks and I hope you too find `pdocs` useful!
+I hope you too find `pdocs` useful!
 
 ~Timothy Crosley
