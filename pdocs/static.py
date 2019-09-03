@@ -61,6 +61,7 @@ def html_out(
     source: bool = False,
 ):
     if len(roots) > 1:
+        dst.mkdir(parents=True, exist_ok=True)
         p = dst / "index.html"
         idx = pdocs.render.html_index(roots, link_prefix=link_prefix)
         p.write_text(idx, encoding="utf-8")

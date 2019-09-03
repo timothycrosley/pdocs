@@ -12,7 +12,7 @@ import pdocs.html_helpers as hh
   <table id="module-list">
   % for root in roots:
     <tr>
-      <td><a href="${link_prefix}${root.name}">${root.name}</a></td>
+      <td><a href="${link_prefix}${root.name}/">${root.name}</a></td>
       <td>
       % if len(root.docstring.strip()) > 0:
         <div class="desc">${root.docstring | hh.mark}</div>
