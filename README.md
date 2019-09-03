@@ -21,6 +21,8 @@ to run an HTTP server that serves generated HTML for installed modules.
 `pdocs` is an MIT Licensed fork of `pdoc` with the goal of staying true to the original vision
 layed out by the projects creator.
 
+NOTE: For most projects, the best way to use `pdocs` is using [portray](https://timothycrosley.github.io/portray/).
+
 Features
 --------
 
