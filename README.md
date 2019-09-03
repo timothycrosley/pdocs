@@ -23,6 +23,8 @@ layed out by the projects creator.
 
 NOTE: For most projects, the best way to use `pdocs` is using [portray](https://timothycrosley.github.io/portray/).
 
+[![asciicast](https://asciinema.org/a/265744.svg)](https://asciinema.org/a/265744)
+
 Features
 --------
 
