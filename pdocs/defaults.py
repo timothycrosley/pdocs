@@ -1,3 +1,9 @@
+SERVER_PORT = 8080
+SERVER_HOST = "127.0.0.1"
+
+HTML_OUTPUT_DIRECTORY = "site"
+MARKDOWN_OUTPUT_DIRECTORY = "docs"
+
 MARKDOWN_EXTENSIONS = [
     "markdown.extensions.abbr",
     "markdown.extensions.admonition",
@@ -9,7 +15,6 @@ MARKDOWN_EXTENSIONS = [
     "markdown.extensions.smarty",
     "markdown.extensions.toc",
 ]
-
 MARKDOWN_EXTENSION_CONFIGS = {
     "markdown.extensions.smarty": {
         "smart_angled_quotes": False,

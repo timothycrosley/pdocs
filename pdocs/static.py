@@ -17,10 +17,7 @@ def module_to_path(m: pdocs.doc.Module, extension="html") -> pathlib.Path:
     if m.submodules:
         p /= f"index.{extension}"
     else:
-        if p.stem == "index":
-            p = p.with_suffix(f".m.{extension}")
-        else:
-            p = p.with_suffix(f".{extension}")
+        p = p.with_suffix(f".{extension}")
     return p
 
 
@@ -44,19 +41,15 @@ def path_to_module(
     raise StaticError("No matching module for {path}".format(path=path))
 
 
-def would_overwrite(dst: pathlib.Path, roots: typing.Sequence[pdocs.doc.Module]) -> bool:
-    """
-        Would rendering root to dst overwrite any file?
-    """
+def would_overwrite(destination: pathlib.Path, roots: typing.Sequence[pdocs.doc.Module]) -> bool:
+    """Would rendering root to dst overwrite any file?"""
     if len(roots) > 1:
-        p = dst / "index.html"
-        if p.exists():
+        path = destination / "index.html"
+        if path.exists():
             return True
     for root in roots:
-        for m in root.allmodules():
-            p = dst.joinpath(module_to_path(m))
-            if p.exists():
-                return True
+        if destination.joinpath(root.name).exists():
+            return True
     return False
 
 
@@ -85,12 +78,11 @@ def md_out(
     dst: pathlib.Path,
     roots: typing.Sequence[pdocs.doc.Module],
     externel_links: bool = True,
-    link_prefix: str = "",
     source: bool = False,
 ):
     for root in roots:
         for m in root.allmodules():
             p = dst.joinpath(module_to_path(m, extension="md"))
             p.parent.mkdir(parents=True, exist_ok=True)
-            out = pdocs.render.text(m)
+            out = pdocs.render.text(m, source=source)
             p.write_text(out, encoding="utf-8")

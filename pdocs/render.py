@@ -7,13 +7,7 @@ from mako.lookup import TemplateLookup
 
 import pdocs.doc
 
-html_module_suffix = ".m.html"
-"""
-The suffix to use for module HTML files. By default, this is set to
-`.m.html`, where the extra `.m` is used to differentiate a package's
-`index.html` from a submodule called `index`.
-"""
-
+html_module_suffix = ".html"
 html_package_name = "index.html"
 """
 The file name to use for a package's `__init__.py` module.
@@ -65,16 +59,6 @@ def html_module(
     Returns the documentation for the module `module_name` in HTML
     format. The module must be importable.
 
-    `docfilter` is an optional predicate that controls which
-    documentation objects are shown in the output. It is a single
-    argument function that takes a documentation object and returns
-    `True` or `False`. If `False`, that object will not be included in
-    the output.
-
-    If `allsubmodules` is `True`, then every submodule of this module
-    that can be found will be included in the documentation, regardless
-    of whether `__all__` contains it.
-
     If `external_links` is `True`, then identifiers to external modules
     are always turned into links.
 
@@ -93,22 +77,13 @@ def html_module(
 
 
 def text(
-    mod: pdocs.doc.Module, docfilter: typing.Optional[str] = None, allsubmodules: bool = False
+    mod: pdocs.doc.Module, source: bool=True
 ) -> str:
-    """
-    Returns the documentation for the module `module_name` in plain
+    """Returns the documentation for the module `module_name` in plain
     text format. The module must be importable.
 
-    `docfilter` is an optional predicate that controls which
-    documentation objects are shown in the output. It is a single
-    argument function that takes a documentation object and returns
-    True of False. If False, that object will not be included in the
-    output.
-
-    If `allsubmodules` is `True`, then every submodule of this module
-    that can be found will be included in the documentation, regardless
-    of whether `__all__` contains it.
+    *source* - If set to True (the default) source will be included in the produced output.
     """
     t = _get_tpl("/text.mako")
-    text, _ = re.subn("\n\n\n+", "\n\n", t.render(module=mod).strip())
+    text, _ = re.subn("\n\n\n+", "\n\n", t.render(module=mod, show_source_code=source).strip())
     return text

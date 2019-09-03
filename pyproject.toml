@@ -31,7 +31,7 @@ pep8-naming = "^0.8.2"
 in-project = "true"
 
 [tool.poetry.scripts]
-pdocs = "pdocs.cli:main"
+pdocs = "pdocs.cli:__hug__.cli"
 
 [build-system]
 requires = ["poetry>=0.12"]
