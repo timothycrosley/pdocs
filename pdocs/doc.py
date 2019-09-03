@@ -497,7 +497,7 @@ class Class(Doc):
                 # Let instance members override class members.
                 continue
 
-            if inspect.isfunction(obj) or inspect.ismethod(obj):
+            if inspect.isroutine(obj):
                 self.doc[name] = Function(
                     name, self.module, obj, cls=self, method=_is_method(self.cls, name)
                 )
@@ -615,8 +615,8 @@ class Class(Doc):
             return _pdoc.get("%s.%s" % (self.name, name), False) is None
 
         def exported(name):
-            exported = name == _is_exported(name)
-            return not forced_out(name) and exported
+            if _is_exported(name) and not forced_out(name):
+                return name
 
         idents = dict(inspect.getmembers(self.cls))
         return dict([(n, o) for n, o in idents.items() if exported(n)])
@@ -705,7 +705,7 @@ class Function(Doc):
     def _signature(function):
         try:
             return inspect.signature(function)
-        except TypeError:  # We can't get a Python signature (likely C function)
+        except (TypeError, ValueError):  # We can't get a Python signature (likely C function)
             return False
 
     def return_annotation(self):
