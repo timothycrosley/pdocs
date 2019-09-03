@@ -51,3 +51,20 @@ The above features are explained in more detail in pdocs's documentation.
 
 `pdocs` is compatible with Python 3.6 and newer.
 
+## Quick Start
+
+The following guides should get you up using pdocs in no time:
+
+1. [Installation](https://timothycrosley.github.io/pdocs/docs/quick_start/1.-installation/) - TL;DR: Run `pip3 install pdocs` within your projects virtual environment.
+2. [Command Line Usage](https://timothycrosley.github.io/pdocs/docs/quick_start/2.-cli/) - TL;DR: Run `pdocs server YOUR_MODULES` to test and `pdocs as_html YOUR_MODULES` to generate HTML.
+3. [API Usage](https://timothycrosley.github.io/pdocs/docs/quick_start/3.-api/) - TL;DR: Everything available via the CLI is also easily available programmatically from within Python.
+
+## Why Create `pdocs`?
+
+I created `pdocs` to help power [portray](https://timothycrosley.github.io/portray/) while staying true to the original vision of `pdoc` and maintain
+MIT license compatibility. In the end I created to help power better documentation websites for both my own projects and any other Python projects
+that are so inspired.
+
+Thanks and I hope you too find `pdocs` useful!
+
+~Timothy Crosley
