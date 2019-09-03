@@ -17,6 +17,8 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 
 Changelog
 =========
+## 1.0.1 - September 3rd 2019
+- Fixed a bug determining class methods
 
 ## 1.0.0 - September 2nd 2019
 Initial API stable release of pdocs
