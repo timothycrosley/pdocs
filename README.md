@@ -18,8 +18,8 @@ interface of a Python module or package. The `pdocs` script can be used to
 generate Markdown or HTML of a module's public interface, or it can be used
 to run an HTTP server that serves generated HTML for installed modules.
 
-`pdocs` is an MIT Licensed fork of `pdoc` with the goal of staying true to the original vision
-layed out by the project's creator.
+`pdocs` is an MIT Licensed fork of [pdoc](https://github.com/mitmproxy/pdoc)'s original implementation by Andrew Gallant (@BurntSushi).
+ with the goal of staying true to the original vision layed out by the project's creator.
 
 NOTE: For most projects, the best way to use `pdocs` is using [portray](https://timothycrosley.github.io/portray/).
 
@@ -58,6 +58,28 @@ The following guides should get you up using pdocs in no time:
 1. [Installation](https://timothycrosley.github.io/pdocs/docs/quick_start/1.-installation/) - TL;DR: Run `pip3 install pdocs` within your projects virtual environment.
 2. [Command Line Usage](https://timothycrosley.github.io/pdocs/docs/quick_start/2.-cli/) - TL;DR: Run `pdocs server YOUR_MODULES` to test and `pdocs as_html YOUR_MODULES` to generate HTML.
 3. [API Usage](https://timothycrosley.github.io/pdocs/docs/quick_start/3.-api/) - TL;DR: Everything available via the CLI is also easily available programmatically from within Python.
+
+## Differences Between pdocs and pdoc
+
+Below is a running list of intentional differences between [pdoc](https://github.com/mitmproxy/pdoc) and [pdocs](https://github.com/timothycrosley/pdocs).
+
+- pdocs has built-in support for Markdown documentation generation (as needed by [portray](https://timothycrosley.github.io/portray/)).
+- pdocs has built-in support for the inclusion of Type Annotation information in reference documentation.
+- pdocs requires Python 3.6+; pdoc maintains Python2 compatibility as of the latest public release.
+- pdocs uses the most recent development tools to ensure long-term maintainability (mypy, black, isort, flake8, bandit, ...)
+- pdocs generates project documentation to a temporary folder when serving locally, instead of including a live server. An intentional trade-off between simplicity and performance.
+- pdocs provides a simplified Python API in addition to CLI API.
+- pdocs is actively maintained.
+- pdocs uses [hug CLI and sub-commands](https://github.com/timothycrosley/pdocs/blob/master/pdocs/cli.py#L1), pdoc uses [argparse and a single command](https://github.com/mitmproxy/pdoc/blob/master/pdoc/cli.py#L1).
+- pdoc provides textual documentation from the command-line, pdocs removed this feature for API simplicity.
+
+## Notes on Licensing and Fork
+
+The original pdoc followed the [Unlicense license](https://unlicense.org/), and as such so does the initial commit to this fork here: https://github.com/timothycrosley/pdocs/commit/7cf925101e4ffc5690f2952ac9ad0b7b0410b4f8.
+Unlicense is fully compatible with MIT, and the reason for the switch going forward is because MIT is a more standard and well-known license.
+
+As seen by that commit, I chose to fork with fresh history, as the project is very old (2013) and I felt many of the commits that happened in the past might, instead of helping to debug issues, lead to red herrings due to the many changes that have happened
+to the many changes the Python eco-system has seen since that time. If you desire to see the complete history for any reason, it remains available on the original [pdoc repository](https://github.com/mitmproxy/pdoc).
 
 ## Why Create `pdocs`?
 
