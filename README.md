@@ -61,7 +61,7 @@ The following guides should get you up using pdocs in no time:
 
 ## Differences Between pdocs and pdoc
 
-Below is a running list of intentional differences between [pdoc](https://github.com/mitmproxy/pdoc) and [pdocs](https://github.com/timothycrosley/pdocs).
+Below is a running list of intentional differences between [pdoc](https://github.com/mitmproxy/pdoc) and [pdocs](https://github.com/timothycrosley/pdocs):
 
 - pdocs has built-in support for Markdown documentation generation (as needed by [portray](https://timothycrosley.github.io/portray/)).
 - pdocs has built-in support for the inclusion of Type Annotation information in reference documentation.
@@ -75,11 +75,11 @@ Below is a running list of intentional differences between [pdoc](https://github
 
 ## Notes on Licensing and Fork
 
-The original pdoc followed the [Unlicense license](https://unlicense.org/), and as such so does the initial commit to this fork here: https://github.com/timothycrosley/pdocs/commit/7cf925101e4ffc5690f2952ac9ad0b7b0410b4f8.
+The original pdoc followed the [Unlicense license](https://unlicense.org/), and as such so does the initial commit to this fork [here](https://github.com/timothycrosley/pdocs/commit/7cf925101e4ffc5690f2952ac9ad0b7b0410b4f8).
 Unlicense is fully compatible with MIT, and the reason for the switch going forward is because MIT is a more standard and well-known license.
 
 As seen by that commit, I chose to fork with fresh history, as the project is very old (2013) and I felt many of the commits that happened in the past might, instead of helping to debug issues, lead to red herrings due to the many changes that have happened
-to the many changes the Python eco-system has seen since that time. If you desire to see the complete history for any reason, it remains available on the original [pdoc repository](https://github.com/mitmproxy/pdoc).
+in the Python eco-system since that time. If you desire to see the complete history for any reason, it remains available on the original [pdoc repository](https://github.com/mitmproxy/pdoc).
 
 ## Why Create `pdocs`?
 
