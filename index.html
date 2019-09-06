@@ -259,6 +259,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#differences-between-pdocs-and-pdoc" class="md-nav__link">
+    Differences Between pdocs and pdoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-on-licensing-and-fork" class="md-nav__link">
+    Notes on Licensing and Fork
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-create-pdocs" class="md-nav__link">
     Why Create pdocs?
   </a>
@@ -621,6 +635,20 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#differences-between-pdocs-and-pdoc" class="md-nav__link">
+    Differences Between pdocs and pdoc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes-on-licensing-and-fork" class="md-nav__link">
+    Notes on Licensing and Fork
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#why-create-pdocs" class="md-nav__link">
     Why Create pdocs?
   </a>
@@ -663,8 +691,8 @@
 interface of a Python module or package. The <code>pdocs</code> script can be used to
 generate Markdown or HTML of a module's public interface, or it can be used
 to run an HTTP server that serves generated HTML for installed modules.</p>
-<p><code>pdocs</code> is an MIT Licensed fork of <code>pdoc</code> with the goal of staying true to the original vision
-layed out by the project's creator.</p>
+<p><code>pdocs</code> is an MIT Licensed fork of <a href="https://github.com/mitmproxy/pdoc">pdoc</a>'s original implementation by Andrew Gallant (@BurntSushi).
+ with the goal of staying true to the original vision layed out by the project's creator.</p>
 <p>NOTE: For most projects, the best way to use <code>pdocs</code> is using <a href="https://timothycrosley.github.io/portray/">portray</a>.</p>
 <p><a href="https://asciinema.org/a/265744"><img alt="asciicast" src="https://asciinema.org/a/265744.svg" /></a></p>
 <h2 id="features">Features</h2>
@@ -697,6 +725,24 @@ layed out by the project's creator.</p>
 <li><a href="https://timothycrosley.github.io/pdocs/docs/quick_start/2.-cli/">Command Line Usage</a> - TL;DR: Run <code>pdocs server YOUR_MODULES</code> to test and <code>pdocs as_html YOUR_MODULES</code> to generate HTML.</li>
 <li><a href="https://timothycrosley.github.io/pdocs/docs/quick_start/3.-api/">API Usage</a> - TL;DR: Everything available via the CLI is also easily available programmatically from within Python.</li>
 </ol>
+<h2 id="differences-between-pdocs-and-pdoc">Differences Between pdocs and pdoc</h2>
+<p>Below is a running list of intentional differences between <a href="https://github.com/mitmproxy/pdoc">pdoc</a> and <a href="https://github.com/timothycrosley/pdocs">pdocs</a>:</p>
+<ul>
+<li>pdocs has built-in support for Markdown documentation generation (as needed by <a href="https://timothycrosley.github.io/portray/">portray</a>).</li>
+<li>pdocs has built-in support for the inclusion of Type Annotation information in reference documentation.</li>
+<li>pdocs requires Python 3.6+; pdoc maintains Python2 compatibility as of the latest public release.</li>
+<li>pdocs uses the most recent development tools to ensure long-term maintainability (mypy, black, isort, flake8, bandit, ...)</li>
+<li>pdocs generates project documentation to a temporary folder when serving locally, instead of including a live server. An intentional trade-off between simplicity and performance.</li>
+<li>pdocs provides a simplified Python API in addition to CLI API.</li>
+<li>pdocs is actively maintained.</li>
+<li>pdocs uses <a href="https://github.com/timothycrosley/pdocs/blob/master/pdocs/cli.py#L1">hug CLI and sub-commands</a>, pdoc uses <a href="https://github.com/mitmproxy/pdoc/blob/master/pdoc/cli.py#L1">argparse and a single command</a>.</li>
+<li>pdoc provides textual documentation from the command-line, pdocs removed this feature for API simplicity.</li>
+</ul>
+<h2 id="notes-on-licensing-and-fork">Notes on Licensing and Fork</h2>
+<p>The original pdoc followed the <a href="https://unlicense.org/">Unlicense license</a>, and as such so does the initial commit to this fork <a href="https://github.com/timothycrosley/pdocs/commit/7cf925101e4ffc5690f2952ac9ad0b7b0410b4f8">here</a>.
+Unlicense is fully compatible with MIT, and the reason for the switch going forward is because MIT is a more standard and well-known license.</p>
+<p>As seen by that commit, I chose to fork with fresh history, as the project is very old (2013) and I felt many of the commits that happened in the past might, instead of helping to debug issues, lead to red herrings due to the many changes that have happened
+in the Python eco-system since that time. If you desire to see the complete history for any reason, it remains available on the original <a href="https://github.com/mitmproxy/pdoc">pdoc repository</a>.</p>
 <h2 id="why-create-pdocs">Why Create <code>pdocs</code>?</h2>
 <p>I created <code>pdocs</code> to help power <a href="https://timothycrosley.github.io/portray/">portray</a> while staying true to the original vision of <code>pdoc</code> and maintain
 MIT license compatibility. In the end I created it to help power better documentation websites for Python projects.</p>
