@@ -99,8 +99,14 @@ def _submodules_from_import_name(mname: str) -> typing.Sequence[str]:
         mname is an import based module name
     """
     loc = importlib.util.find_spec(mname).submodule_search_locations
+    if loc is None:
+        # Case of mname corresponding to a terminal module, and not a package
+        # iter_modules returns everything it can find anywhere if loc is None,
+        # which is not what we want
+        return []
     as_imported = importlib.import_module(mname)
-    loc += [path for path in as_imported.__path__ if path not in loc]
+    if getattr(as_imported, "__path__", None):
+        [loc.append(path) for path in as_imported.__path__ if path not in loc]
     ret = []
     for mi in pkgutil.iter_modules(loc, prefix=mname + "."):
         if isinstance(mi, tuple):
