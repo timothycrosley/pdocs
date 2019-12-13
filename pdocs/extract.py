@@ -83,9 +83,13 @@ def submodules(dname: str, mname: str) -> typing.Sequence[str]:
         Returns a list of fully qualified submodules within a package, given a
         base directory and a fully qualified module name.
     """
-    loc = importlib.util.find_spec(mname).submodule_search_locations
-    as_imported = importlib.import_module(mname)
-    loc += [path for path in as_imported.__path__ if path not in loc]
+    module_spec = importlib.util.find_spec(mname)
+    if module_spec:
+        loc = module_spec.submodule_search_locations
+        as_imported = importlib.import_module(mname)
+        loc += [path for path in as_imported.__path__ if path not in loc]
+    else:
+        loc = [mname]
     ret = []
     for mi in pkgutil.iter_modules(loc, prefix=mname + "."):
         if isinstance(mi, tuple):
