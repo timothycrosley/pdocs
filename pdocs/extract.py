@@ -78,20 +78,50 @@ def load_module(basedir: str, module: str) -> typing.Tuple[typing.Any, bool]:
         return m, ispackage
 
 
-def submodules(dname: str, mname: str) -> typing.Sequence[str]:
+def submodules(dname: typing.Optional[str], mname: str) -> typing.Sequence[str]:
     """
-        Returns a list of fully qualified submodules within a package, given a
-        base directory and a fully qualified module name.
+        Return a list of submodule names using a file path or import based name
+
+        If dname is None or empty string, mname will be used as import name.
+        Otherwise, the relative directory path at dname will be joined to
+        package name mname, and used as the base path for searching.
     """
-    module_spec = importlib.util.find_spec(mname)
-    if module_spec:
-        loc = module_spec.submodule_search_locations
-        as_imported = importlib.import_module(mname)
-        loc += [path for path in as_imported.__path__ if path not in loc]
+    if dname:
+        return _submodules_from_pathing(dname, mname)
     else:
-        loc = [mname]
+        return _submodules_from_import_name(mname)
+
+
+def _submodules_from_import_name(mname: str) -> typing.Sequence[str]:
+    """
+        Return a list of fully qualified submodules within a package
+
+        mname is an import based module name
+    """
+    loc = importlib.util.find_spec(mname).submodule_search_locations
+    as_imported = importlib.import_module(mname)
+    loc += [path for path in as_imported.__path__ if path not in loc]
     ret = []
     for mi in pkgutil.iter_modules(loc, prefix=mname + "."):
+        if isinstance(mi, tuple):
+            # Python 3.5 compat
+            ret.append(mi[1])
+        else:
+            ret.append(mi.name)
+    ret.sort()
+    return ret
+
+
+def _submodules_from_pathing(dname: str, mname: str) -> typing.Sequence[str]:
+    """
+        Return a list of fully qualified submodules within a package, given a
+        base directory and a fully qualified module name.
+
+        dname is a partial path, and mname is the base directory to search for submodules from
+    """
+    loc = os.path.join(dname, *mname.split("."))
+    ret = []
+    for mi in pkgutil.iter_modules([loc], prefix=mname + "."):
         if isinstance(mi, tuple):
             # Python 3.5 compat
             ret.append(mi[1])
