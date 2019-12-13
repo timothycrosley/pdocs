@@ -27,9 +27,6 @@ ipython = "^7.7"
 flake8 = "^3.7"
 pep8-naming = "^0.8.2"
 
-[tool.poetry.settings.virtualenvs]
-in-project = "true"
-
 [tool.poetry.scripts]
 pdocs = "pdocs.cli:__hug__.cli"
 
