@@ -123,7 +123,8 @@ def _submodules_from_pathing(dname: str, mname: str) -> typing.Sequence[str]:
         Return a list of fully qualified submodules within a package, given a
         base directory and a fully qualified module name.
 
-        dname is a partial path, and mname is the base directory to search for submodules from
+        dname is a directory file path, under which mname is stored,
+        and mname is module to search for submodules from
     """
     loc = os.path.join(dname, *mname.split("."))
     ret = []
