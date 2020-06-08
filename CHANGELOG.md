@@ -17,6 +17,9 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 
 Changelog
 =========
+## 1.0.2 - June 7th 2020
+- Improved support for a variety of package hierchies.
+
 ## 1.0.1 - September 3rd 2019
 - Fixed a bug determining class methods
 
