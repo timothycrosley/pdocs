@@ -16,7 +16,7 @@ def ${func.name}(
     ${",\n    ".join(func.params())}
 )${returns}
 ```
-% if func.parsed_docstring:
+% if hasattr(func, 'parsed_docstring') and func.parsed_docsting:
     # table with arguments info
     % if func.parsed_docstring.params:
 | Parameter | type | description | default |
@@ -41,7 +41,7 @@ ${func.docstring}
 ```python3
 ${var.name}
 ```
-% if var.parsed_docstring:
+% if hasattr(var, 'parsed_docstring') and var.parsed_docsting:
     # table with arguments info
     % if var.parsed_docstring.params:
 | Parameter | type | description | default |
@@ -65,7 +65,7 @@ class ${cls.name}(
 )
 ```
 
-% if cls.parsed_docstring:
+% if hasattr(cls, 'parsed_docstring') and cls.parsed_docsting:
     # table with arguments info
     % if cls.parsed_docstring.params:
 | Parameter | type | description | default |
