@@ -16,7 +16,18 @@ def ${func.name}(
     ${",\n    ".join(func.params())}
 )${returns}
 ```
+% if func.parsed_docstring:
+    # table with arguments info
+    % if func.parsed_docstring.params:
+| Parameter | type | description | default |
+|---|---|---|---|
+        % for p in func.parsed_docstring.params:
+| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+        % endfor
+    % endif
+% else:
 ${func.docstring}
+% endif
 
 % if show_source_code and func.source:
 
@@ -30,7 +41,19 @@ ${func.docstring}
 ```python3
 ${var.name}
 ```
+% if var.parsed_docstring:
+    # table with arguments info
+    % if var.parsed_docstring.params:
+| Parameter | type | description | default |
+|---|---|---|---|
+        % for p in var.parsed_docstring.params:
+| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+        % endfor
+    % endif
+% else:
 ${var.docstring}
+% endif
+
 </%def>
 
 <%def name="class_(cls)" buffered="True">
@@ -42,7 +65,18 @@ class ${cls.name}(
 )
 ```
 
+% if cls.parsed_docstring:
+    # table with arguments info
+    % if cls.parsed_docstring.params:
+| Parameter | type | description | default |
+|---|---|---|---|
+        % for p in cls.parsed_docstring.params:
+| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+        % endfor
+    % endif
+% else:
 ${cls.docstring}
+% endif
 
 % if show_source_code and cls.source:
 

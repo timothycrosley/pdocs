@@ -2,6 +2,8 @@ import ast
 import inspect
 import typing
 
+import docstring_parser
+
 __pdoc__ = {}
 
 
@@ -146,6 +148,14 @@ class Doc(object):
         """
         The docstring for this object. It has already been cleaned
         by `inspect.cleandoc`.
+        """
+
+        try:
+            self.parsed_docsting = docstring_parser.parse(self.docstring)
+        except docstring_parser.ParseError:
+            self.parsed_docsting = None
+        """
+        The parsed docstring for this object.
         """
 
     @property
