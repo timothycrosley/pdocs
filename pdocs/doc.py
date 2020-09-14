@@ -151,9 +151,9 @@ class Doc(object):
         """
 
         try:
-            self.parsed_docsting = docstring_parser.parse(self.docstring)
+            self.parsed_docstring = docstring_parser.parse(self.docstring)
         except docstring_parser.ParseError:
-            self.parsed_docsting = None
+            self.parsed_docstring = None
         """
         The parsed docstring for this object.
         """
