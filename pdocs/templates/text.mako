@@ -17,13 +17,24 @@ def ${func.name}(
 )${returns}
 ```
 % if hasattr(func, 'parsed_docstring') and func.parsed_docstring:
-    # table with arguments info
-    % if func.parsed_docstring.params:
-| Parameter | type | description | default |
+<% parsed_ds = func.parsed_docstring %>
+    % if parsed_ds.params:
+**Parameters:**
+
+| Name | Type | Description | Default |
 |---|---|---|---|
-        % for p in func.parsed_docstring.params:
+        % for p in parsed_ds.params:
 | ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
         % endfor
+    % endif
+    % if parsed_ds.returns:
+<% ret = parsed_ds.returns %>
+
+**Returns:**
+
+| Type | Description |
+|---|---|
+| ${ret.type_name} | ${ret.description} |
     % endif
 % else:
 ${func.docstring}
