@@ -65,7 +65,7 @@ class ${cls.name}(
 )
 ```
 
-% if hasattr(cls, 'parsed_docstring') and cls.parsed_docsting:
+% if hasattr(cls, 'parsed_docstring') and cls.parsed_docstring:
     # table with arguments info
     % if cls.parsed_docstring.params:
 | Parameter | type | description | default |
