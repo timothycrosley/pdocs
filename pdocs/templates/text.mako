@@ -41,7 +41,7 @@ ${func.docstring}
 ```python3
 ${var.name}
 ```
-% if hasattr(var, 'parsed_docstring') and var.parsed_docsting:
+% if hasattr(var, 'parsed_docstring') and var.parsed_docstring:
     # table with arguments info
     % if var.parsed_docstring.params:
 | Parameter | type | description | default |
