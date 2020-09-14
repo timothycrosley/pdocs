@@ -16,7 +16,7 @@ def ${func.name}(
     ${",\n    ".join(func.params())}
 )${returns}
 ```
-% if hasattr(func, 'parsed_docstring') and func.parsed_docsting:
+% if hasattr(func, 'parsed_docstring') and func.parsed_docstring:
     # table with arguments info
     % if func.parsed_docstring.params:
 | Parameter | type | description | default |
