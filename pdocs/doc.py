@@ -280,7 +280,10 @@ class Module(Doc):
             if isinstance(dobj, External):
                 continue
             dobj.docstring = inspect.cleandoc(docstring)
-            dobj.parsed_docstring = docstring_parser.parse(dobj.docstring)
+            try:
+                dobj.parsed_docstring = docstring_parser.parse(dobj.docstring)
+            except docstring_parser.ParseError:
+                dobj.parsed_docstring = None
 
     @property
     def source(self):
