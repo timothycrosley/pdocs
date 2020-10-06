@@ -1,22 +1,82 @@
 ## Define mini-templates for each portion of the doco.
 
+<%def name="h1(s)"># ${s}
+</%def>
+<%def name="h2(s)">## ${s}
+</%def>
+<%def name="h3(s)">### ${s}
+</%def>
 <%def name="h4(s)">#### ${s}
 </%def>
 
-<%def name="function(func)" buffered="True">
+<%def name="function(func, class_level=False)" buffered="True">
     <%
         returns = func.return_annotation()
         if returns:
             returns = ' -> ' + returns
+        parsed_ds = func.parsed_docstring
     %>
-${"#### " + func.name}
+% if class_level:
+${h4(func.name)}
+% else:
+${h3(func.name)}
+% endif
 
 ```python3
 def ${func.name}(
     ${",\n    ".join(func.params())}
 )${returns}
 ```
+
+% if parsed_ds:
+    <%
+        short_desc = parsed_ds.short_description
+        long_desc = parsed_ds.long_description
+        params = parsed_ds.params
+        ret = parsed_ds.returns
+        raises = parsed_ds.raises
+    %>
+    % if short_desc:
+${short_desc}
+
+    % endif
+    % if long_desc:
+${long_desc}
+
+    % endif
+    % if params:
+**Parameters:**
+
+| Name | Type | Description | Default |
+|---|---|---|---|
+        % for p in params:
+| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+        % endfor
+    % endif
+
+    % if ret:
+
+**${"Yields:" if ret.is_generator else "Returns:"}**
+
+| Type | Description |
+|---|---|
+## TODO: handle multiline descriptions
+| ${ret.type_name} | ${ret.description} |
+    % endif
+    % if raises:
+
+**Raises:**
+
+| Type | Description |
+|---|---|
+        % for r in raises:
+## TODO: handle multiline descriptions
+| ${r.type_name} | ${r.description} |
+        % endfor
+    % endif
+% else:
 ${func.docstring}
+% endif
 
 % if show_source_code and func.source:
 
@@ -30,11 +90,28 @@ ${func.docstring}
 ```python3
 ${var.name}
 ```
+<%
+    var_pd = var.parsed_docstring
+    if var_pd:
+        short_desc = var_pd.short_description
+        long_desc = var_pd.long_description
+%>
+% if var_pd:
+    % if short_desc:
+${short_desc}
+
+    % endif
+    %if long_desc:
+${long_desc}
+    % endif
+% else:
 ${var.docstring}
+% endif
+
 </%def>
 
 <%def name="class_(cls)" buffered="True">
-${"### " + cls.name}
+${h3(cls.name)}
 
 ```python3
 class ${cls.name}(
@@ -42,7 +119,19 @@ class ${cls.name}(
 )
 ```
 
+% if cls.parsed_docstring:
+    % if cls.parsed_docstring.params:
+${h4("Attributes")}
+
+| Name | Type | Description | Default |
+|---|---|---|---|
+        % for p in cls.parsed_docstring.params:
+| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+        % endfor
+    % endif
+% else:
 ${cls.docstring}
+% endif
 
 % if show_source_code and cls.source:
 
@@ -86,7 +175,7 @@ ${variable(v)}
 % if static_methods:
 ${h4('Static methods')}
     % for f in static_methods:
-${function(f)}
+${function(f, True)}
 
     % endfor
 % endif
@@ -101,7 +190,7 @@ ${variable(v)}
 % if methods:
 ${h4('Methods')}
 % for m in methods:
-${function(m)}
+${function(m, True)}
 
 % endfor
 % endif
@@ -116,11 +205,18 @@ ${function(m)}
   functions = module.functions()
   submodules = module.submodules
   heading = 'Namespace' if module.is_namespace else 'Module'
+  parsed_ds = module.parsed_docstring
 %>
 
-${heading} ${module.name}
-=${'=' * (len(module.name) + len(heading))}
+${h1(heading + " " + module.name)}
+% if parsed_ds:
+${parsed_ds.short_description}
+
+${parsed_ds.long_description}
+## TODO: add meta (example and notes)
+% else:
 ${module.docstring}
+% endif
 
 % if show_source_code and module.source:
 
@@ -130,16 +226,14 @@ ${module.docstring}
 % endif
 
 % if submodules:
-Sub-modules
------------
+${h2("Sub-modules")}
     % for m in submodules:
 * [${m.name}](${m.name.split(".")[-1]}/)
     % endfor
 % endif
 
 % if variables:
-Variables
----------
+${h2("Variables")}
     % for v in variables:
 ${variable(v)}
 
@@ -147,8 +241,7 @@ ${variable(v)}
 % endif
 
 % if functions:
-Functions
----------
+${h2("Functions")}
     % for f in functions:
 ${function(f)}
 
@@ -156,8 +249,7 @@ ${function(f)}
 % endif
 
 % if classes:
-Classes
--------
+${h2("Classes")}
     % for c in classes:
 ${class_(c)}
 

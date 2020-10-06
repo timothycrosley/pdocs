@@ -2,6 +2,8 @@ import ast
 import inspect
 import typing
 
+import docstring_parser
+
 __pdoc__ = {}
 
 
@@ -148,6 +150,14 @@ class Doc(object):
         by `inspect.cleandoc`.
         """
 
+        try:
+            self.parsed_docstring = docstring_parser.parse(self.docstring)
+        except docstring_parser.ParseError:
+            self.parsed_docstring = None
+        """
+        The parsed docstring for this object.
+        """
+
     @property
     def source(self):
         """
@@ -270,6 +280,10 @@ class Module(Doc):
             if isinstance(dobj, External):
                 continue
             dobj.docstring = inspect.cleandoc(docstring)
+            try:
+                dobj.parsed_docstring = docstring_parser.parse(dobj.docstring)
+            except docstring_parser.ParseError:
+                dobj.parsed_docstring = None
 
     @property
     def source(self):
