@@ -17,6 +17,9 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 
 Changelog
 =========
+## 1.1.0 - January 15th 2021
+- Added numpydoc and googledoc support.
+
 ## 1.0.2 - June 7th 2020
 - Improved support for a variety of package hierchies.
 
