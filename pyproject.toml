@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pdocs"
-version = "1.1.0"
+version = "1.1.1"
 description = "A simple program and library to auto generate API documentation for Python modules."
 authors = ["Timothy Crosley <timothy.crosley@gmail.com>"]
 license = "MIT"

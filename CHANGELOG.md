@@ -17,6 +17,9 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 
 Changelog
 =========
+## 1.1.1 - January 29th 2021
+- Fixed #18: Incorrectly identified "google docstring" format should not break building.
+
 ## 1.1.0 - January 15th 2021
 - Added numpydoc and googledoc support.
 
