@@ -152,7 +152,7 @@ class Doc(object):
 
         try:
             self.parsed_docstring = docstring_parser.parse(self.docstring)
-        except docstring_parser.ParseError:
+        except (docstring_parser.ParseError, ValueError):
             self.parsed_docstring = None
         """
         The parsed docstring for this object.
