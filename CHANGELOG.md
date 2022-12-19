@@ -17,6 +17,11 @@ see the [Installation QuickStart](https://timothycrosley.github.io/portray/docs/
 
 Changelog
 =========
+## 1.2.0 - Dec 18th 2022
+- Dropped Python 3.6 support
+- Bumped dependencies
+- General fixes
+
 ## 1.1.1 - January 29th 2021
 - Fixed #18: Incorrectly identified "google docstring" format should not break building.
 
