@@ -114,14 +114,28 @@ class ${cls.name}(
     ${",\n    ".join(cls.params())}
 )
 ```
+<%
+    cls_pd = cls.parsed_docstring
+    if cls_pd:
+        short_desc = cls_pd.short_description
+        long_desc = cls_pd.long_description
+        params = cls_pd.params
+%>
 
-% if cls.parsed_docstring:
-    % if cls.parsed_docstring.params:
+% if cls_pd:
+    % if short_desc:
+${short_desc}
+
+    % endif
+    %if long_desc:
+${long_desc}
+    % endif
+    % if params:
 ${h4("Attributes")}
 
 | Name | Type | Description | Default |
 |---|---|---|---|
-        % for p in cls.parsed_docstring.params:
+        % for p in params:
 | ${p.arg_name} | ${p.type_name} | ${p.description.replace('\n', '<br>')} | ${p.default} |
         % endfor
     % endif
