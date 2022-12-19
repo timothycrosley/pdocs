@@ -50,7 +50,7 @@ ${long_desc}
 | Name | Type | Description | Default |
 |---|---|---|---|
         % for p in params:
-| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+| ${p.arg_name} | ${p.type_name} | ${p.description.replace('\n', '<br>')} | ${p.default} |
         % endfor
     % endif
 
@@ -61,7 +61,7 @@ ${long_desc}
 | Type | Description |
 |---|---|
 ## TODO: handle multiline descriptions
-| ${ret.type_name} | ${ret.description} |
+| ${ret.type_name} | ${ret.description.replace('\n', '<br>')} |
     % endif
     % if raises:
 
@@ -71,7 +71,7 @@ ${long_desc}
 |---|---|
         % for r in raises:
 ## TODO: handle multiline descriptions
-| ${r.type_name} | ${r.description} |
+| ${r.type_name} | ${r.description.replace('\n', '<br>')} |
         % endfor
     % endif
 % else:
@@ -126,7 +126,7 @@ ${h4("Attributes")}
 | Name | Type | Description | Default |
 |---|---|---|---|
         % for p in cls.parsed_docstring.params:
-| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+| ${p.arg_name} | ${p.type_name} | ${p.description.replace('\n', '<br>')} | ${p.default} |
         % endfor
     % endif
 % else:
