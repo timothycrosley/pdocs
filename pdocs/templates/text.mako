@@ -8,6 +8,12 @@
 </%def>
 <%def name="h4(s)">#### ${s}
 </%def>
+<%def name="par(s)">
+% if s:
+${s}
+
+% endif
+</%def>
 
 <%def name="function(func, class_level=False)" buffered="True">
     <%
@@ -36,21 +42,16 @@ def ${func.name}(
         ret = parsed_ds.returns
         raises = parsed_ds.raises
     %>
-    % if short_desc:
-${short_desc}
+${par(short_desc)}
+${par(long_desc)}
 
-    % endif
-    % if long_desc:
-${long_desc}
-
-    % endif
     % if params:
 **Parameters:**
 
 | Name | Type | Description | Default |
 |---|---|---|---|
         % for p in params:
-| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+| ${p.arg_name} | ${p.type_name} | ${p.description.replace('\n', '<br>')} | ${p.default} |
         % endfor
     % endif
 
@@ -61,7 +62,7 @@ ${long_desc}
 | Type | Description |
 |---|---|
 ## TODO: handle multiline descriptions
-| ${ret.type_name} | ${ret.description} |
+| ${ret.type_name} | ${ret.description.replace('\n', '<br>')} |
     % endif
     % if raises:
 
@@ -71,7 +72,7 @@ ${long_desc}
 |---|---|
         % for r in raises:
 ## TODO: handle multiline descriptions
-| ${r.type_name} | ${r.description} |
+| ${r.type_name} | ${r.description.replace('\n', '<br>')} |
         % endfor
     % endif
 % else:
@@ -97,13 +98,8 @@ ${var.name}
         long_desc = var_pd.long_description
 %>
 % if var_pd:
-    % if short_desc:
-${short_desc}
-
-    % endif
-    %if long_desc:
-${long_desc}
-    % endif
+${par(short_desc)}
+${par(long_desc)}
 % else:
 ${var.docstring}
 % endif
@@ -140,7 +136,7 @@ ${h4("Attributes")}
 | Name | Type | Description | Default |
 |---|---|---|---|
         % for p in params:
-| ${p.arg_name} | ${p.type_name} | ${p.description} | ${p.default} |
+| ${p.arg_name} | ${p.type_name} | ${p.description.replace('\n', '<br>')} | ${p.default} |
         % endfor
     % endif
 % else:
@@ -224,9 +220,8 @@ ${function(m, True)}
 
 ${h1(heading + " " + module.name)}
 % if parsed_ds:
-${parsed_ds.short_description}
-
-${parsed_ds.long_description}
+${par(parsed_ds.short_description)}
+${par(parsed_ds.long_description)}
 ## TODO: add meta (example and notes)
 % else:
 ${module.docstring}

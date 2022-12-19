@@ -68,8 +68,8 @@ def load_module(basedir: str, module: str) -> typing.Tuple[typing.Any, bool]:
         try:
             # This can literally raise anything
             m = importlib.import_module(module)
-        except ImportError:
-            raise ExtractError("Module not found: {module}".format(module=module))
+        except ImportError as e:
+            raise ExtractError("Could not import module {module}: {e}".format(module=module, e=e))
         except Exception as e:
             raise ExtractError("Error importing {module}: {e}".format(module=module, e=e))
         # This is the only case where we actually have to test whether we're a package

@@ -82,6 +82,6 @@ def text(mod: pdocs.doc.Module, source: bool = True) -> str:
 
     *source* - If set to True (the default) source will be included in the produced output.
     """
-    t = _get_tpl("/text.mako")
-    text, _ = re.subn("\n\n\n+", "\n\n", t.render(module=mod, show_source_code=source).strip())
+    raw_text = _get_tpl("/text.mako").render(module=mod, show_source_code=source)
+    text, _ = re.subn("\n *\n *\n+", "\n\n", raw_text.strip().replace('\r\n', '\n'))
     return text
