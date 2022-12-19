@@ -4,6 +4,11 @@ import typing
 
 import docstring_parser
 
+try:  # python >= 3.9
+    from types import GenericAlias
+except ImportError:  # python >= 3.7
+    from typing import _GenericAlias as GenericAlias
+
 __pdoc__ = {}
 
 
@@ -615,6 +620,8 @@ class Class(Doc):
 
     def subclasses(self):
         """Returns back all subclasses of this class"""
+        if isinstance(self.cls, GenericAlias):
+            return []
         return [self.module.find_class(cls) for cls in type.__subclasses__(self.cls)]
 
     def __public_objs(self):
