@@ -1,5 +1,5 @@
 def simple():
     """
-        A docstring.
+    A docstring.
     """
     pass

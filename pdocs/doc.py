@@ -7,7 +7,7 @@ import docstring_parser
 try:  # python >= 3.9
     from types import GenericAlias
 except ImportError:  # python >= 3.7
-    from typing import _GenericAlias as GenericAlias
+    from typing import _GenericAlias as GenericAlias  # type: ignore
 
 __pdoc__ = {}
 
@@ -301,7 +301,7 @@ class Module(Doc):
     @property
     def is_namespace(self):
         """Returns `True` if this module represents a
-           [namespace package](https://packaging.python.org/guides/packaging-namespace-packages/).
+        [namespace package](https://packaging.python.org/guides/packaging-namespace-packages/).
         """
         return self.module.__spec__.origin in (None, "namespace")
 
@@ -765,7 +765,6 @@ class Function(Doc):
         render_pos_only_separator = False
         render_kw_only_separator = True
         for param in signature.parameters.values():
-
             kind = param.kind
             if kind == inspect._POSITIONAL_ONLY:
                 render_pos_only_separator = True

@@ -1,6 +1,7 @@
+import tutils
+
 import pdocs.doc
 import pdocs.extract
-import tutils
 
 
 def test_simple():

@@ -1,4 +1,4 @@
-import importlib
+import importlib.util
 import os
 import pkgutil
 import typing
@@ -12,9 +12,9 @@ class ExtractError(Exception):
 
 def split_module_spec(spec: str) -> typing.Tuple[str, str]:
     """
-        Splits a module specification into a base path (which may be empty), and a module name.
+    Splits a module specification into a base path (which may be empty), and a module name.
 
-        Raises ExtactError if the spec is invalid.
+    Raises ExtactError if the spec is invalid.
     """
     if not spec:
         raise ExtractError("Empty module spec.")
@@ -36,7 +36,7 @@ def split_module_spec(spec: str) -> typing.Tuple[str, str]:
 
 def load_module(basedir: str, module: str) -> typing.Tuple[typing.Any, bool]:
     """
-        Returns a module object, and whether the module is a package or not.
+    Returns a module object, and whether the module is a package or not.
     """
     ispackage = False
     if basedir:
@@ -57,6 +57,7 @@ def load_module(basedir: str, module: str) -> typing.Tuple[typing.Any, bool]:
             )
 
         ispec = importlib.util.spec_from_file_location(modname, location)
+        assert ispec
         mobj = importlib.util.module_from_spec(ispec)
         try:
             # This can literally raise anything
@@ -80,11 +81,11 @@ def load_module(basedir: str, module: str) -> typing.Tuple[typing.Any, bool]:
 
 def submodules(dname: typing.Optional[str], mname: str) -> typing.Sequence[str]:
     """
-        Return a list of submodule names using a file path or import based name
+    Return a list of submodule names using a file path or import based name
 
-        If dname is None or empty string, mname will be used as import name.
-        Otherwise, the relative directory path at dname will be joined to
-        package name mname, and used as the base path for searching.
+    If dname is None or empty string, mname will be used as import name.
+    Otherwise, the relative directory path at dname will be joined to
+    package name mname, and used as the base path for searching.
     """
     if dname:
         return _submodules_from_pathing(dname, mname)
@@ -94,11 +95,15 @@ def submodules(dname: typing.Optional[str], mname: str) -> typing.Sequence[str]:
 
 def _submodules_from_import_name(mname: str) -> typing.Sequence[str]:
     """
-        Return a list of fully qualified submodules within a package
+    Return a list of fully qualified submodules within a package
 
-        mname is an import based module name
+    mname is an import based module name
     """
-    loc = importlib.util.find_spec(mname).submodule_search_locations
+    spec = importlib.util.find_spec(mname)
+    if not spec:
+        return []
+
+    loc = spec.submodule_search_locations
     if loc is None:
         # Case of mname corresponding to a terminal module, and not a package
         # iter_modules returns everything it can find anywhere if loc is None,
@@ -106,7 +111,7 @@ def _submodules_from_import_name(mname: str) -> typing.Sequence[str]:
         return []
     as_imported = importlib.import_module(mname)
     if getattr(as_imported, "__path__", None):
-        [loc.append(path) for path in as_imported.__path__ if path not in loc]
+        [loc.append(path) for path in as_imported.__path__ if path not in loc]  # type: ignore
     ret = []
     for mi in pkgutil.iter_modules(loc, prefix=mname + "."):
         if isinstance(mi, tuple):
@@ -120,11 +125,11 @@ def _submodules_from_import_name(mname: str) -> typing.Sequence[str]:
 
 def _submodules_from_pathing(dname: str, mname: str) -> typing.Sequence[str]:
     """
-        Return a list of fully qualified submodules within a package, given a
-        base directory and a fully qualified module name.
+    Return a list of fully qualified submodules within a package, given a
+    base directory and a fully qualified module name.
 
-        dname is a directory file path, under which mname is stored,
-        and mname is module to search for submodules from
+    dname is a directory file path, under which mname is stored,
+    and mname is module to search for submodules from
     """
     loc = os.path.join(dname, *mname.split("."))
     ret = []
@@ -152,16 +157,16 @@ def _extract_module(dname: str, mname: str, parent=None) -> typing.Any:
 
 def extract_module(spec: str):
     """
-        Extracts and returns a module object. The spec argument can have the
-        following forms:
+    Extracts and returns a module object. The spec argument can have the
+    following forms:
 
-        Simple module: "foo.bar"
-        Module path: "./path/to/module"
-        File path: "./path/to/file.py"
+    Simple module: "foo.bar"
+    Module path: "./path/to/module"
+    File path: "./path/to/file.py"
 
-        This function always invalidates caches to enable hot load and reload.
+    This function always invalidates caches to enable hot load and reload.
 
-        May raise ExtactError.
+    May raise ExtactError.
     """
     importlib.invalidate_caches()
     dname, mname = split_module_spec(spec)

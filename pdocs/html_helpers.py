@@ -16,7 +16,7 @@ pyident = re.compile(r"^[a-zA-Z_][a-zA-Z0-9_.]+$")
 indent = re.compile(r"^\s*")
 
 _markdown = markdown.Markdown(
-    output_format="html5",
+    output_format="html",
     extensions=defaults.MARKDOWN_EXTENSIONS,
     extension_configs=defaults.MARKDOWN_EXTENSION_CONFIGS,
 )
@@ -42,10 +42,10 @@ def sourceid(dobj):
 
 def clean_source_lines(lines):
     """
-  Cleans the source code so that pygments can render it well.
+    Cleans the source code so that pygments can render it well.
 
-  Returns one string with all of the source code.
-  """
+    Returns one string with all of the source code.
+    """
     base_indent = len(indent.match(lines[0]).group(0))
     base_indent = 0
     for line in lines:
@@ -86,15 +86,15 @@ def glimpse(s, length=100):
 
 def module_url(parent, m, link_prefix):
     """
-        Returns a URL for `m`, which must be an instance of `Module`.
-        Also, `m` must be a submodule of the module being documented.
+    Returns a URL for `m`, which must be an instance of `Module`.
+    Also, `m` must be a submodule of the module being documented.
 
-        Namely, '.' import separators are replaced with '/' URL
-        separators. Also, packages are translated as directories
-        containing `index.html` corresponding to the `__init__` module,
-        while modules are translated as regular HTML files with an
-        `.m.html` suffix. (Given default values of
-        `pdoc.html_module_suffix` and `pdoc.html_package_name`.)
+    Namely, '.' import separators are replaced with '/' URL
+    separators. Also, packages are translated as directories
+    containing `index.html` corresponding to the `__init__` module,
+    while modules are translated as regular HTML files with an
+    `.m.html` suffix. (Given default values of
+    `pdoc.html_module_suffix` and `pdoc.html_package_name`.)
     """
     if parent.name == m.name:
         return ""
@@ -113,12 +113,12 @@ def module_url(parent, m, link_prefix):
 
 def external_url(refname):
     """
-        Attempts to guess an absolute URL for the external identifier
-        given.
+    Attempts to guess an absolute URL for the external identifier
+    given.
 
-        Note that this just returns the refname with an ".ext" suffix.
-        It will be up to whatever is interpreting the URLs to map it
-        to an appropriate documentation page.
+    Note that this just returns the refname with an ".ext" suffix.
+    It will be up to whatever is interpreting the URLs to map it
+    to an appropriate documentation page.
     """
     return "/%s.ext" % refname
 
@@ -129,19 +129,19 @@ def is_external_linkable(name):
 
 def lookup(module, refname, link_prefix):
     """
-        Given a fully qualified identifier name, return its refname
-        with respect to the current module and a value for a `href`
-        attribute. If `refname` is not in the public interface of
-        this module or its submodules, then `None` is returned for
-        both return values. (Unless this module has enabled external
-        linking.)
+    Given a fully qualified identifier name, return its refname
+    with respect to the current module and a value for a `href`
+    attribute. If `refname` is not in the public interface of
+    this module or its submodules, then `None` is returned for
+    both return values. (Unless this module has enabled external
+    linking.)
 
-        In particular, this takes into account sub-modules and external
-        identifiers. If `refname` is in the public API of the current
-        module, then a local anchor link is given. If `refname` is in the
-        public API of a sub-module, then a link to a different page with
-        the appropriate anchor is given. Otherwise, `refname` is
-        considered external and no link is used.
+    In particular, this takes into account sub-modules and external
+    identifiers. If `refname` is in the public API of the current
+    module, then a local anchor link is given. If `refname` is in the
+    public API of a sub-module, then a link to a different page with
+    the appropriate anchor is given. Otherwise, `refname` is
+    considered external and no link is used.
     """
     d = module.find_ident(refname)
     if isinstance(d, pdocs.doc.External):
@@ -158,9 +158,9 @@ def lookup(module, refname, link_prefix):
 
 def link(parent, refname, link_prefix):
     """
-        A convenience wrapper around `href` to produce the full
-        `a` tag if `refname` is found. Otherwise, plain text of
-        `refname` is returned.
+    A convenience wrapper around `href` to produce the full
+    `a` tag if `refname` is found. Otherwise, plain text of
+    `refname` is returned.
     """
     name, url = lookup(parent, refname, link_prefix)
     if name is None:

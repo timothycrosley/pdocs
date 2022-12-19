@@ -45,7 +45,7 @@ def _get_tpl(name):
 
 def html_index(roots: typing.Sequence[pdocs.doc.Module], link_prefix: str = "/") -> str:
     """
-        Render an HTML module index.
+    Render an HTML module index.
     """
     t = _get_tpl("/html_index.mako")
     t = t.render(roots=roots, link_prefix=link_prefix)
@@ -83,5 +83,5 @@ def text(mod: pdocs.doc.Module, source: bool = True) -> str:
     *source* - If set to True (the default) source will be included in the produced output.
     """
     raw_text = _get_tpl("/text.mako").render(module=mod, show_source_code=source)
-    text, _ = re.subn("\n *\n *\n+", "\n\n", raw_text.strip().replace('\r\n', '\n'))
+    text, _ = re.subn("\n *\n *\n+", "\n\n", raw_text.strip().replace("\r\n", "\n"))
     return text

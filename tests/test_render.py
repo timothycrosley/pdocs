@@ -1,7 +1,8 @@
+import tutils
+
 import pdocs.doc
 import pdocs.extract
 import pdocs.render
-import tutils
 
 
 def test_html_module():

@@ -1,7 +1,7 @@
 import pytest
+import tutils
 
 import pdocs.extract
-import tutils
 
 
 @pytest.mark.parametrize(
@@ -82,13 +82,13 @@ def test_extract_module(path, expected, match):
     "path,modname,expected",
     [
         ("./modules", "one", []),
-        (""         , "modules.one", []),
+        ("", "modules.one", []),
         ("./modules", "dirmod", []),
-        (""         , "modules.dirmod", []),
+        ("", "modules.dirmod", []),
         ("./modules", "submods", ["submods.three", "submods.two"]),
-        (""         , "modules.submods", ["modules.submods.three", "modules.submods.two"]),
+        ("", "modules.submods", ["modules.submods.three", "modules.submods.two"]),
         ("./modules", "malformed", ["malformed.syntax"]),
-        (""         , "modules.malformed", ["modules.malformed.syntax"]),
+        ("", "modules.malformed", ["modules.malformed.syntax"]),
     ],
 )
 def test_submodules(path, modname, expected):

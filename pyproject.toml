@@ -7,27 +7,28 @@ license = "MIT"
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.6"
-Markdown = "^3.0.0"
-Mako = "^1.1"
-hug = "^2.6"
-docstring_parser = "^0.7.2"
-dataclasses = { version=">=0.7", python="^3.6, <3.7" }
+python = ">=3.7"
+Markdown = ">=3.0.0"
+Mako = ">1.2.2"
+hug = ">=2.6"
+docstring_parser = ">=0.7.2"
+dataclasses = { version=">=0.7", python=">=3.6, <3.7" }
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.720.0"
-isort = "^4.3"
-pytest = "^5.1"
-pytest-cov = "^2.7"
-flake8-bugbear = "^19.8"
-bandit = "^1.6"
-vulture = "^1.0"
-safety = "^1.8"
-black = {version = "^18.3-alpha.0", allow-prereleases = true}
-pytest-mock = "^1.10"
-ipython = "^7.7"
-flake8 = "^3.7"
-pep8-naming = "^0.8.2"
+mypy = ">=0.720.0"
+isort = ">=4.3"
+pytest = ">=5.1"
+pytest-cov = ">=2.7"
+flake8-bugbear = ">=19.8"
+bandit = ">=1.6"
+vulture = ">=1.0"
+safety = ">=1.8"
+black = {version = ">=18.3-alpha.0", allow-prereleases = true}
+pytest-mock = ">=1.10"
+ipython = ">=7.7"
+flake8 = ">=3.7"
+pep8-naming = ">=0.8.2"
+types-Markdown = ">0.0"
 
 [tool.poetry.scripts]
 pdocs = "pdocs.cli:__hug__.cli"

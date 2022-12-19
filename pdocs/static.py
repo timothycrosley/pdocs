@@ -11,7 +11,7 @@ class StaticError(Exception):
 
 def module_to_path(m: pdocs.doc.Module, extension="html") -> pathlib.Path:
     """
-        Calculates the filesystem path for the static output of a given module.
+    Calculates the filesystem path for the static output of a given module.
     """
     p = pathlib.Path(*m.name.split("."))
     if m.submodules:
@@ -25,7 +25,7 @@ def path_to_module(
     roots: typing.Sequence[pdocs.doc.Module], path: pathlib.Path
 ) -> pdocs.doc.Module:
     """
-        Retrieves the matching module for a given path from a module tree.
+    Retrieves the matching module for a given path from a module tree.
     """
     if path.suffix == ".html":
         path = path.with_suffix("")

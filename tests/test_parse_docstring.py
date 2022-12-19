@@ -1,6 +1,6 @@
+import pdocs
 from pdocs import doc
 from tests import tutils
-import pdocs
 
 
 def simple_function(arg1, arg2=1):
@@ -26,18 +26,16 @@ def test_parse_docstring():
     assert first_param.arg_name == "arg1"
     assert first_param.type_name == "str"
     assert first_param.description == "first argument"
-    assert first_param.is_optional == False
+    assert first_param.is_optional is False
     assert second_param.arg_name == "arg2"
     assert second_param.type_name == "int"
     assert second_param.description == "second argument"
-    # assert second_param.is_optional == True
-    # assert second_param.default == 1
 
 
 def token_to_alias(raw_text, vocab):
     """
     Replaces known tokens with their "tag" form.
-    
+
     i.e. the alias' in some known vocabulary list.
 
     Parameters
@@ -66,13 +64,16 @@ def test_numpydocs():
     assert first_param.arg_name == "raw_text"
     assert first_param.type_name == "pd.Series"
     assert first_param.description == "contains text with known jargon, slang, etc"
-    assert first_param.is_optional == False
+    assert first_param.is_optional is False
     assert second_param.arg_name == "vocab"
     assert second_param.type_name == "pd.DataFrame"
     assert second_param.description == "contains alias' keyed on known slang, jargon, etc."
-    assert second_param.is_optional == False
+    assert second_param.is_optional is False
     returns = parsed.returns
-    assert returns.description == "new text, with all slang/jargon replaced with unified representations"
+    assert (
+        returns.description
+        == "new text, with all slang/jargon replaced with unified representations"
+    )
     assert returns.return_name is None
     assert returns.type_name == "pd.Series"
     assert not returns.is_generator
@@ -80,8 +81,8 @@ def test_numpydocs():
 
 def test_parse_numpy_example():
     with tutils.tdir():
-        m = pdocs.extract.extract_module(f"./docstring_parser/example_numpy.py")
-    
+        m = pdocs.extract.extract_module("./docstring_parser/example_numpy.py")
+
     assert m.parsed_docstring
     pd = m.parsed_docstring
     assert pd.short_description == "Module level docstring."
@@ -95,16 +96,19 @@ def test_parse_numpy_example():
     assert x.description == "The first parameter."
     assert y.description == "The second parameter. Default={default}."
     assert add_pd.returns.type_name == "int"
-    assert add_pd.returns.description == """Added value.
+    assert (
+        add_pd.returns.description
+        == """Added value.
 
 !!! note
     The return type must be duplicated in the docstring to comply with the NumPy
     docstring style."""
+    )
 
     assert "gen" in m.doc
     gen_pd = m.doc["gen"].parsed_docstring
     assert gen_pd.short_description == "Yield a numbered string."
-    n, = gen_pd.params
+    (n,) = gen_pd.params
     assert n.description == "The length of iteration."
     assert n.type_name == "int"
     assert n.arg_name == "n"
@@ -138,8 +142,8 @@ def test_parse_numpy_example():
 
 def test_parse_google_example():
     with tutils.tdir():
-        m = pdocs.extract.extract_module(f"./docstring_parser/example_google.py")
-    
+        m = pdocs.extract.extract_module("./docstring_parser/example_google.py")
+
     assert m.parsed_docstring
     pd = m.parsed_docstring
     assert pd.short_description == "Module level docstring."
@@ -158,7 +162,7 @@ def test_parse_google_example():
     assert "gen" in m.doc
     gen_pd = m.doc["gen"].parsed_docstring
     assert gen_pd.short_description == "Yield a numbered string."
-    n, = gen_pd.params
+    (n,) = gen_pd.params
     assert n.description == "The length of iteration."
     assert n.type_name == "int"
     assert n.arg_name == "n"

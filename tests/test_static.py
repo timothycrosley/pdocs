@@ -1,10 +1,10 @@
 import pathlib
 
 import pytest
+import tutils
 
 import pdocs.extract
 import pdocs.static
-import tutils
 
 
 @pytest.mark.parametrize(
