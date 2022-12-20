@@ -12,7 +12,6 @@ Markdown = ">=3.0.0"
 Mako = ">1.2.2"
 hug = ">=2.6"
 docstring_parser = ">=0.7.2"
-dataclasses = { version=">=0.7", python=">=3.6, <3.7" }
 
 [tool.poetry.dev-dependencies]
 mypy = ">=0.720.0"
