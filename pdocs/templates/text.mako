@@ -29,9 +29,13 @@ ${h3(func.name)}
 % endif
 
 ```python3
+% if func.params():
 def ${func.name}(
     ${",\n    ".join(func.params())}
 )${returns}
+% else:
+def ${func.name}()${returns}
+% endif
 ```
 
 % if parsed_ds:
@@ -82,7 +86,9 @@ ${func.docstring}
 % if show_source_code and func.source:
 
 ??? example "View Source"
-        ${"\n        ".join(func.source)}
+    ```python3
+    ${"    ".join(func.source)}
+    ```
 
 % endif
 </%def>
@@ -110,9 +116,13 @@ ${var.docstring}
 ${h3(cls.name)}
 
 ```python3
+% if cls.params():
 class ${cls.name}(
     ${",\n    ".join(cls.params())}
 )
+% else:
+class ${cls.name}()
+% endif
 ```
 <%
     cls_pd = cls.parsed_docstring
@@ -146,7 +156,9 @@ ${cls.docstring}
 % if show_source_code and cls.source:
 
 ??? example "View Source"
-        ${"\n        ".join(cls.source)}
+    ```python3
+    ${"    ".join(cls.source)}
+    ```
 
 ------
 
@@ -230,7 +242,9 @@ ${module.docstring}
 % if show_source_code and module.source:
 
 ??? example "View Source"
-        ${"\n        ".join(module.source)}
+    ```python3
+    ${"    ".join(module.source)}
+    ```
 
 % endif
 
